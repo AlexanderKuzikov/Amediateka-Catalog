@@ -25,6 +25,13 @@ const items = [...data.items];
 const byTitle = (a, b) => a.title.localeCompare(b.title, 'ru', { sensitivity: 'base' });
 const num = v => (v === null || v === undefined || v === '' ? null : parseFloat(v));
 const underscore = value => (value === null || value === undefined ? '' : String(value));
+const NOW = new Date(data.updatedAt || Date.now()).getTime();
+const NEW_MS = 30 * 24 * 60 * 60 * 1000;
+const isNew = d => {
+  if (!d.addedAt) return false;
+  const t = new Date(d.addedAt).getTime();
+  return Number.isFinite(t) && NOW - t <= NEW_MS;
+};
 
 items.sort((a, b) => {
   const ya = num(a.year), yb = num(b.year);
@@ -68,17 +75,18 @@ function ratingCell(value, cls) {
 
 function posterButton(d) {
   const alt = esc('Постер: ' + d.title);
+  const badge = isNew(d) ? '<span class="new-badge">новое</span>' : '';
   if (!d.poster) {
-    return `<button type="button" class="poster loaded" aria-label="${esc('Постер отсутствует: ' + d.title)}"><img src="${esc(PLACEHOLDER)}" alt="${alt}" class="is-placeholder" loading="lazy" decoding="async"></button>`;
+    return `<button type="button" class="poster loaded" aria-label="${esc('Постер отсутствует: ' + d.title)}">${badge}<img src="${esc(PLACEHOLDER)}" alt="${alt}" class="is-placeholder" loading="lazy" decoding="async"></button>`;
   }
   const thumb = d.poster.replace('/400x600/', '/200x300/');
-  return `<button type="button" class="poster" aria-label="${esc('Увеличить постер: ' + d.title)}"><img src="${esc(thumb)}" alt="${alt}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>`;
+  return `<button type="button" class="poster" aria-label="${esc('Увеличить постер: ' + d.title)}">${badge}<img src="${esc(thumb)}" alt="${alt}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>`;
 }
 
 function rowHtml(d) {
   const descHtml = d.desc ? `<p class="desc-text">${esc(d.desc)}</p>` : '';
   const genresHtml = d.genres.map(g => `<span class="genre-tag">${esc(g)}</span>`).join('');
-  return `<tr data-id="${d.id}" data-genres="${esc(d.genres.join('|'))}" data-countries="${esc((d.countries || []).join('|'))}" data-year="${esc(underscore(d.year))}" data-am="${esc(d.am || '')}" data-imdb="${esc(d.imdb || '')}" data-kp="${esc(d.kp || '')}" data-seasons="${esc(underscore(d.seasons))}" data-url="${esc(d.url)}">
+  return `<tr data-id="${d.id}" data-new="${isNew(d) ? '1' : '0'}" data-added="${esc(d.addedAt || '')}" data-genres="${esc(d.genres.join('|'))}" data-countries="${esc((d.countries || []).join('|'))}" data-year="${esc(underscore(d.year))}" data-am="${esc(d.am || '')}" data-imdb="${esc(d.imdb || '')}" data-kp="${esc(d.kp || '')}" data-seasons="${esc(underscore(d.seasons))}" data-url="${esc(d.url)}">
   <td class="title-col"><div class="title-wrap">
     ${posterButton(d)}
     <div class="title-info"><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.title)}</a>${descHtml}</div>
@@ -108,7 +116,9 @@ const jsonItems = items.map(d => ({
   imdb: d.imdb,
   kp: d.kp,
   desc: d.desc,
-  poster: d.poster
+  poster: d.poster,
+  addedAt: d.addedAt,
+  isNew: isNew(d)
 }));
 const jsonPayload = JSON.stringify({ count: jsonItems.length, updatedAt: data.updatedAt, items: jsonItems })
   .replaceAll('<', '\\u003c')
@@ -144,4 +154,4 @@ for (const [name, html] of [['amediateka_catalog.html', staticHtml], ['amediatek
 const size = h => (Buffer.byteLength(h, 'utf8') / 1024).toFixed(0) + ' KB';
 console.log(`Static:       dist/amediateka_catalog.html (${size(staticHtml)})`);
 console.log(`JSON-embedded: dist/amediateka_catalog_json.html (${size(jsonHtml)})`);
-console.log(`Series: ${items.length}, genres: ${genresList.length}, countries: ${countriesList.length}, date: ${date}`);
+console.log(`Series: ${items.length}, genres: ${genresList.length}, countries: ${countriesList.length}, new for 30 days: ${items.filter(isNew).length}, date: ${date}`);

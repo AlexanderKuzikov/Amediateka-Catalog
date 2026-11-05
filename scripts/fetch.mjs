@@ -126,6 +126,15 @@ await pool(list, 8, async s => {
 });
 console.log(`Details: ${list.length - detailFailures}/${list.length}, rating changes: ${ratingChanges}`);
 
+let previous = null;
+try {
+  previous = JSON.parse(await fs.readFile(DATA_FILE, 'utf8'));
+} catch (e) { /* first run */ }
+const prevAdded = new Map(((previous && previous.items) || [])
+  .map(s => [s.id, s.addedAt])
+  .filter(([, v]) => v));
+const fetchedAt = new Date().toISOString();
+
 console.log('Checking posters...');
 const items = await pool(list, 24, async s => {
   const src = s.detail || s;
@@ -150,16 +159,12 @@ const items = await pool(list, 24, async s => {
     kp: src.ratingKinopoisk ? String(src.ratingKinopoisk) : null,
     desc: clean(src.shortDescription || s.shortDescription),
     poster: poster ? poster.url : null,
-    posterAsset: poster ? poster.asset : null
+    posterAsset: poster ? poster.asset : null,
+    addedAt: prevAdded.get(s.id) || fetchedAt
   };
 });
 
 items.sort((a, b) => a.id - b.id);
-
-let previous = null;
-try {
-  previous = JSON.parse(await fs.readFile(DATA_FILE, 'utf8'));
-} catch (e) { /* first run */ }
 
 if (previous && Array.isArray(previous.items)) {
   const oldIds = new Set(previous.items.map(s => s.id));

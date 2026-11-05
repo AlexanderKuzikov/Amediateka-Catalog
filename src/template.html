@@ -105,6 +105,17 @@ body.col-resizing{cursor:col-resize;user-select:none}
 .poster:not(.loaded)::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--bg4) 30%,var(--bg5) 50%,var(--bg4) 70%);background-size:200% 100%;animation:shimmer 1.3s linear infinite;z-index:1}
 .poster.loaded::before{display:none}
 @keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+.new-strip{margin-bottom:8px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px}
+.new-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.new-head h2{font-size:15px;font-weight:700;color:var(--text)}
+.new-count{display:inline-block;min-width:20px;padding:1px 7px;border-radius:10px;background:var(--link);color:#fff;font-size:11px;font-weight:700;text-align:center;vertical-align:1px}
+.new-hint{font-size:11px;color:var(--text3)}
+.new-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.new-card{flex:0 0 118px;border:0;background:none;padding:0;text-align:left;color:var(--text);font:inherit;cursor:pointer}
+.new-card .poster{width:118px;border-radius:10px}
+.new-card-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:11.5px;line-height:1.3;margin-top:6px;min-height:2.6em}
+.new-card-meta{font-size:10.5px;color:var(--text3);margin-top:3px}
+.new-badge{position:absolute;left:6px;top:6px;z-index:2;background:var(--link);color:#fff;font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:5px;line-height:1.2}
 .lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
 .lightbox[hidden]{display:none}
 .lb-backdrop{position:absolute;inset:0;background:rgba(4,4,10,.78);backdrop-filter:blur(3px)}
@@ -148,6 +159,10 @@ html{--thumb-w:64px}
 .lb-dialog{flex-direction:column;overflow:auto;padding:16px;gap:14px}
 .lb-poster{width:min(220px,60vw);margin:0 auto}
 .lb-info h2{font-size:17px}
+.new-strip{padding:10px}
+.new-hint{display:none}
+.new-card{flex-basis:96px}
+.new-card .poster{width:96px}
 }
 @media(max-width:480px){
 .view-switch button{padding:5px 8px;font-size:11px}
@@ -221,6 +236,10 @@ html{--thumb-w:64px}
     </select>
     <button id="resetBtn" type="button" onclick="rf()">Сброс</button>
   </div>
+  <section class="new-strip" id="newStrip" hidden>
+    <div class="new-head"><h2>Новое за месяц <span class="new-count" id="newCount"></span></h2><span class="new-hint">сериалы, появившиеся в каталоге за последние 30 дней</span></div>
+    <div class="new-row" id="newRow"></div>
+  </section>
   <div class="stats-bar"><span id="stats"></span><span class="hint">Клик по постеру — увеличить &middot; в таблице можно тянуть границы колонок</span></div>
   <p class="empty-msg" id="emptyMsg" hidden>По заданным фильтрам ничего не найдено.</p>
   <noscript>{{NOSCRIPT_MSG}}</noscript>
@@ -307,8 +326,9 @@ function seasonsText(n){return n?n+' '+plural(+n):''}
 function thumbUrl(full){return full?full.replace('/400x600/','/200x300/'):PLACEHOLDER}
 function posterMarkup(d){
   var alt=esc('Постер: '+d.title);
-  if(!d.poster)return '<button type="button" class="poster loaded" aria-label="Постер отсутствует: '+esc(d.title)+'"><img src="'+PLACEHOLDER+'" alt="'+alt+'" class="is-placeholder" loading="lazy" decoding="async"></button>';
-  return '<button type="button" class="poster" aria-label="Увеличить постер: '+esc(d.title)+'"><img src="'+esc(thumbUrl(d.poster))+'" alt="'+alt+'" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>';
+  var badge=d.isNew?'<span class="new-badge">новое</span>':'';
+  if(!d.poster)return '<button type="button" class="poster loaded" aria-label="Постер отсутствует: '+esc(d.title)+'">'+badge+'<img src="'+PLACEHOLDER+'" alt="'+alt+'" class="is-placeholder" loading="lazy" decoding="async"></button>';
+  return '<button type="button" class="poster" aria-label="Увеличить постер: '+esc(d.title)+'">'+badge+'<img src="'+esc(thumbUrl(d.poster))+'" alt="'+alt+'" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>';
 }
 function ratingMarkup(v,cls){
   if(v)return '<span class="rating rating-'+cls+'">'+esc(v)+'</span>';
@@ -322,6 +342,8 @@ function renderRows(items){
     var countries=d.countries||[];
     var tr=document.createElement('tr');
     tr.dataset.id=String(d.id);
+    tr.dataset.new=d.isNew?'1':'0';
+    tr.dataset.added=d.addedAt||'';
     tr.dataset.genres=(d.genres||[]).join('|');
     tr.dataset.countries=countries.join('|');
     tr.dataset.year=d.year==null?'':String(d.year);
@@ -425,6 +447,7 @@ function buildGrid(){
     card.dataset.id=d.id;
     card.innerHTML=
       '<button type="button" class="poster" aria-label="Увеличить постер: '+esc(tr._title)+'">'+
+        (d.new==='1'?'<span class="new-badge">новое</span>':'')+
         '<img src="'+esc(src)+'"'+(tr._full&&tr._full!==src?' srcset="'+esc(src)+' 200w, '+esc(tr._full)+' 400w" sizes="240px"':'')+' alt="Постер: '+esc(tr._title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer"'+(tr._full?' data-full="'+esc(tr._full)+'"':'')+'>'+
       '</button>'+
       '<div class="card-body">'+
@@ -439,6 +462,34 @@ function buildGrid(){
   });
   gridView.appendChild(frag);
   gridView.querySelectorAll('img').forEach(initImg);
+}
+
+function buildNewStrip(){
+  var strip=document.getElementById('newStrip');
+  if(!strip)return;
+  var items=rows.filter(function(tr){return tr.dataset.new==='1'});
+  if(!items.length)return;
+  document.getElementById('newCount').textContent=items.length;
+  var row=document.getElementById('newRow');
+  var frag=document.createDocumentFragment();
+  items.forEach(function(tr){
+    var d=tr.dataset;
+    var img=tr.querySelector('.poster img');
+    var src=img?img.getAttribute('src'):PLACEHOLDER;
+    var el=document.createElement('button');
+    el.type='button';
+    el.className='new-card';
+    el.dataset.id=d.id;
+    el.setAttribute('aria-label','Новое за месяц: '+tr._title);
+    el.innerHTML='<span class="poster loaded">'+
+        '<img src="'+esc(src)+'"'+(tr._full&&tr._full!==src?' srcset="'+esc(src)+' 200w, '+esc(tr._full)+' 400w" sizes="118px"':'')+' alt="Постер: '+esc(tr._title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'+
+      '</span>'+
+      '<span class="new-card-title">'+esc(tr._title)+'</span>'+
+      '<span class="new-card-meta">'+esc(d.year)+(d.am?' &middot; AM '+esc(d.am):'')+'</span>';
+    frag.appendChild(el);
+  });
+  row.appendChild(frag);
+  strip.hidden=false;
 }
 
 function getSelected(id){
@@ -570,6 +621,8 @@ document.addEventListener('click',function(e){
     updateMsCount(ms);ft();return;
   }
   if(e.target.closest('.ms-done')){closeAllMs();return}
+  var newCard=e.target.closest('.new-card');
+  if(newCard){e.preventDefault();openLb(newCard.dataset.id);return}
   var poster=e.target.closest('.poster');
   if(poster){
     e.preventDefault();
@@ -627,6 +680,7 @@ document.querySelectorAll('#seriesTable .poster img').forEach(initImg);
 buildGrid();
 document.querySelectorAll('.multi-select').forEach(updateMsCount);
 sortRows();ft();
+buildNewStrip();
 setView(localStorage.getItem(VIEW_KEY)||'grid');
 })();
 </script>
