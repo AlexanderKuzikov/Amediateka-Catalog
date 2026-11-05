@@ -6,6 +6,13 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 const DATA_FILE = new URL('../data/series.json', import.meta.url);
 
 const clean = s => String(s ?? '').replace(/\s+/g, ' ').trim();
+const HEADERS = {
+  'User-Agent': UA,
+  Accept: 'application/json, text/plain, */*',
+  'Accept-Language': 'ru-RU,ru;q=0.9,en;q=0.8',
+  Origin: 'https://www.amediateka.ru',
+  Referer: 'https://www.amediateka.ru/'
+};
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function getJSON(url, tries = 3) {
@@ -13,14 +20,14 @@ async function getJSON(url, tries = 3) {
   for (let i = 0; i < tries; i++) {
     try {
       const r = await fetch(url, {
-        headers: { 'User-Agent': UA, Accept: 'application/json' },
+        headers: HEADERS,
         signal: AbortSignal.timeout(30000)
       });
       if (r.status === 429) {
         await sleep(2000 * (i + 1));
         continue;
       }
-      if (!r.ok) throw new Error('HTTP ' + r.status);
+      if (!r.ok) { let body=''; try{body=(await r.text()).slice(0,300)}catch(e){} throw new Error('HTTP ' + r.status + (body ? ' ' + body : '')); }
       return await r.json();
     } catch (e) {
       lastError = e;
