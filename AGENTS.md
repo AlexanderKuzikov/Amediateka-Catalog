@@ -3,8 +3,8 @@
 ## Commands
 
 - install: не требуется, зависимостей нет
-- fetch: `node scripts/fetch.mjs` — тянет список и детали с API, пишет `data/series.json`
-- build: `node scripts/build.mjs` — собирает оба HTML из `data/series.json` и `src/template.html`
+- fetch: `node scripts/fetch.mjs` — тянет список и детали с API, пишет `data/catalog.json`
+- build: `node scripts/build.mjs` — собирает оба HTML из `data/catalog.json` и `src/template.html`
 - monthly: `npm run monthly` — fetch + build
 - force monthly: `powershell -ExecutionPolicy Bypass -File scripts/monthly.ps1 -Force`
 - install task: `powershell -ExecutionPolicy Bypass -File scripts/install-task.ps1` — ежедневная проверка, обновление раз в месяц
@@ -13,20 +13,21 @@
 ## Conventions
 
 - Zero-dependency Node (>=20), ESM, без npm-пакетов.
-- Данные — снимок `data/series.json`; `dist/` всегда генерируется, руками не правится.
-- `addedAt` — дата первого появления сериала в снимке; fetch сохраняет её, build считает новинками последние 30 дней.
+- Данные — снимок `data/catalog.json`; `dist/` всегда генерируется, руками не правится.
+- `addedAt` — дата публикации (`publicationDate`) или первого появления; build считает новинками последние 30 дней.
 - Шаблон один: `src/template.html`, маркеры `{{...}}` подставляет `scripts/build.mjs`.
 - Два варианта вывода: статические строки и встроенный JSON (`#catalog-data`).
 - Сортировка IMDb/КП: при отсутствии рейтинга используется AM (Amediateka).
+- Типы: `kind` = `series` | `movie`; фильтруются переключателем, длительность фильма — в минутах.
 - Постеры: приоритет `productPosterV2` → `v_poster` → `productPoster` → `partnersPoster` → `productItemCover`.
 - Капс не используем, обычный регистр. Коммиты на русском, повелительное наклонение.
 
 ## Structure
 
-- `scripts/fetch.mjs` — сбор данных (list + detail, страны, рейтинги, постеры)
+- `scripts/fetch.mjs` — сбор данных по сериалам и фильмам (list + detail, страны, рейтинги, длительность, постеры)
 - `scripts/build.mjs` — генерация `dist/*.html`
 - `src/template.html` — общий шаблон UI
-- `data/series.json` — снимок данных
+- `data/catalog.json` — снимок данных: 382 сериала и 251 фильм, поле `kind`
 - `dist/amediateka_catalog.html` — статический каталог
 - `dist/amediateka_catalog_json.html` — каталог с JSON внутри HTML
 - `scripts/monthly.ps1` — ежемесячное обновление с проверкой даты снимка

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Каталог сериалов Amediateka</title>
+<title>Каталог сериалов и фильмов Amediateka</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a6dd4'/%3E%3Cpath d='M13 10l10 6-10 6z' fill='%23fff'/%3E%3C/svg%3E">
 <script>try{var t=localStorage.getItem('amediatekaTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');document.documentElement.setAttribute('data-view',localStorage.getItem('amediatekaView')||'grid')}catch(e){document.documentElement.setAttribute('data-view','grid')}</script>
 <style>
@@ -25,6 +25,10 @@ body.lb-open{overflow:hidden}
 .view-switch button{border:0;background:transparent;color:var(--text2);font-size:12px;padding:5px 11px;border-radius:7px;cursor:pointer;font-family:inherit}
 .view-switch button:hover{color:var(--text)}
 .view-switch button.active{background:var(--bg2);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.type-switch{display:flex;background:var(--bg4);border:1px solid var(--border2);border-radius:8px;padding:2px;gap:2px}
+.type-switch button{border:0;background:transparent;color:var(--text2);font-size:12px;padding:6px 10px;border-radius:6px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.type-switch button:hover{color:var(--text)}
+.type-switch button.active{background:var(--bg2);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.25)}
 .theme-toggle{background:var(--bg4);border:1px solid var(--border2);color:var(--text);padding:6px 13px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit}
 .theme-toggle:hover{border-color:var(--link)}
 .container{max-width:1500px;margin:0 auto;padding:10px}
@@ -178,8 +182,8 @@ html{--thumb-w:64px}
 <header class="header">
   <div class="header-inner">
     <div>
-      <h1>&#128250; Каталог сериалов Amediateka</h1>
-      <p>Всего сериалов: <span id="totalCount">{{COUNT}}</span> &middot; данные обновлены {{DATE}}</p>
+      <h1>&#128250; Каталог Amediateka</h1>
+      <p>Сериалы и фильмы: <span id="totalCount">{{COUNT}}</span> &middot; данные обновлены {{DATE}}</p>
     </div>
     <div class="header-actions">
       <div class="view-switch" role="group" aria-label="Вид каталога">
@@ -193,6 +197,11 @@ html{--thumb-w:64px}
 <div class="container">
   <div class="controls">
     <input type="search" id="searchInput" placeholder="Поиск по названию, жанру, стране, описанию..." autocomplete="off">
+    <div class="type-switch" role="group" aria-label="Тип">
+      <button type="button" data-kind="all" class="active" aria-pressed="true">Всё</button>
+      <button type="button" data-kind="series" aria-pressed="false">Сериалы</button>
+      <button type="button" data-kind="movie" aria-pressed="false">Фильмы</button>
+    </div>
     <div class="multi-select" id="genreFilter">
       <button type="button" class="ms-trigger" onclick="toggleMs('genreFilter')" aria-expanded="false">Жанры <span class="ms-count"></span></button>
       <div class="ms-dropdown">
@@ -237,7 +246,7 @@ html{--thumb-w:64px}
     <button id="resetBtn" type="button" onclick="rf()">Сброс</button>
   </div>
   <section class="new-strip" id="newStrip" hidden>
-    <div class="new-head"><h2>Новое за месяц <span class="new-count" id="newCount"></span></h2><span class="new-hint">сериалы, появившиеся в каталоге за последние 30 дней</span></div>
+    <div class="new-head"><h2>Новое за месяц <span class="new-count" id="newCount"></span></h2><span class="new-hint">сериалы и фильмы, появившиеся в каталоге за последние 30 дней</span></div>
     <div class="new-row" id="newRow"></div>
   </section>
   <div class="stats-bar"><span id="stats"></span><span class="hint">Клик по постеру — увеличить &middot; в таблице можно тянуть границы колонок</span></div>
@@ -253,7 +262,7 @@ html{--thumb-w:64px}
           <th data-col="am" data-min="70" style="width:96px"><span>Amediateka</span><span class="sort-arrows"></span><div class="resize-handle" data-col="am"></div></th>
           <th data-col="imdb" data-min="60" style="width:76px"><span>IMDb</span><span class="sort-arrows"></span><div class="resize-handle" data-col="imdb"></div></th>
           <th data-col="kp" data-min="70" style="width:92px"><span>Кинопоиск</span><span class="sort-arrows"></span><div class="resize-handle" data-col="kp"></div></th>
-          <th data-col="seasons" data-min="50" style="width:72px"><span>Сезонов</span><span class="sort-arrows"></span><div class="resize-handle" data-col="seasons"></div></th>
+          <th data-col="seasons" data-min="70" style="width:88px"><span>Формат</span><span class="sort-arrows"></span><div class="resize-handle" data-col="seasons"></div></th>
         </tr></thead>
         <tbody id="tableBody">{{ROWS}}</tbody>
       </table>
@@ -309,19 +318,31 @@ rows.forEach(function(tr){
   tr._title=a?a.textContent.trim():'';
   tr._desc=de?de.textContent.trim():'';
   tr._countries=(tr.dataset.countries||'').split('|').filter(Boolean);
+  tr._kind=tr.dataset.kind||'series';
+  tr._seasons=parseInt(tr.dataset.seasons,10)||0;
+  tr._duration=parseInt(tr.dataset.duration,10)||0;
+  tr._format=formatText(tr._kind,tr._seasons,tr._duration);
+  tr._kindFormat=kindLabel(tr._kind)+(tr._kind==='movie'?(tr._duration?' · '+durationText(tr._duration):''):(tr._seasons?' · '+tr._seasons+' '+plural(tr._seasons):''));
   var im=tr.querySelector('.poster img');
   tr._full=im&&!im.classList.contains('is-placeholder')?im.getAttribute('src').replace('/200x300/','/400x600/'):'';
   if(im&&tr._full)im.setAttribute('data-full',tr._full);
-  tr._search=norm([tr._title,tr._desc,(tr.dataset.genres||'').split('|').join(' '),tr._countries.join(' '),tr.dataset.year].join(' '));
+  tr._search=norm([tr._title,tr._desc,(tr.dataset.genres||'').split('|').join(' '),tr._countries.join(' '),tr._kindFormat,tr.dataset.year].join(' '));
 });
 var cardEls={};
 var sortState={col:'year',dir:'desc'};
+var kindFilter='all';
 var NUMERIC={year:1,am:1,imdb:1,kp:1,seasons:1};
 
 function norm(s){return String(s==null?'':s).toLowerCase().replace(/ё/g,'е').replace(/\s+/g,' ').trim()}
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 function plural(n){n=Math.abs(n)%100;var n1=n%10;if(n>10&&n<20)return 'сезонов';if(n1===1)return 'сезон';if(n1>=2&&n1<=4)return 'сезона';return 'сезонов'}
 function seasonsText(n){return n?n+' '+plural(+n):''}
+function durationText(min){if(!min)return '';var h=Math.floor(min/60),m=min%60;return h?(m?h+' ч '+m+' мин':h+' ч'):m+' мин'}
+function kindLabel(kind){return kind==='movie'?'фильм':'сериал'}
+function formatText(kind,seasons,duration){
+  if(kind==='movie')return duration?durationText(duration):'фильм';
+  return seasons?seasons+' '+plural(+seasons):'—';
+}
 
 function thumbUrl(full){return full?full.replace('/400x600/','/200x300/'):PLACEHOLDER}
 function posterMarkup(d){
@@ -342,6 +363,7 @@ function renderRows(items){
     var countries=d.countries||[];
     var tr=document.createElement('tr');
     tr.dataset.id=String(d.id);
+    tr.dataset.kind=d.kind||'series';
     tr.dataset.new=d.isNew?'1':'0';
     tr.dataset.added=d.addedAt||'';
     tr.dataset.genres=(d.genres||[]).join('|');
@@ -351,6 +373,7 @@ function renderRows(items){
     tr.dataset.imdb=d.imdb||'';
     tr.dataset.kp=d.kp||'';
     tr.dataset.seasons=d.seasons==null?'':String(d.seasons);
+    tr.dataset.duration=d.duration==null?'':String(d.duration);
     tr.dataset.url=d.url||'';
     tr.innerHTML='<td class="title-col"><div class="title-wrap">'+posterMarkup(d)+
       '<div class="title-info"><a href="'+esc(d.url)+'" target="_blank" rel="noopener">'+esc(d.title)+'</a>'+
@@ -360,7 +383,7 @@ function renderRows(items){
       '<td class="rating-col">'+ratingMarkup(d.am,'am')+'</td>'+
       '<td class="rating-col">'+ratingMarkup(d.imdb,'imdb')+'</td>'+
       '<td class="rating-col">'+ratingMarkup(d.kp,'kp')+'</td>'+
-      '<td class="seasons-col">'+esc(d.seasons==null?'':d.seasons)+'</td>';
+      '<td class="seasons-col">'+esc(formatText(d.kind,d.seasons,d.duration))+'</td>';
     frag.appendChild(tr);
   });
   tb.appendChild(frag);
@@ -399,7 +422,7 @@ function fillLb(tr){
   var src=(tr._full||'').replace('/400x600/','/600x900/')||PLACEHOLDER;
   lbImg.src=src;lbImg.setAttribute('data-src',src);lbImg.alt='Постер: '+tr._title;
   lbTitle.textContent=tr._title;
-  lbMeta.textContent=[d.year,seasonsText(d.seasons),tr._countries.join(', ')].filter(Boolean).join(' · ');
+  lbMeta.textContent=[d.year,tr._kindFormat,tr._countries.join(', ')].filter(Boolean).join(' · ');
   var gt=tr.querySelector('.genre-col');
   lbGenres.innerHTML=gt?gt.innerHTML:'';
   lbRatings.innerHTML=ratingChip('am','AM',d.am)+ratingChip('imdb','IMDb',d.imdb)+ratingChip('kp','КП',d.kp);
@@ -452,7 +475,7 @@ function buildGrid(){
       '</button>'+
       '<div class="card-body">'+
         '<a class="card-title" href="'+esc(d.url)+'" target="_blank" rel="noopener">'+esc(tr._title)+'</a>'+
-        '<div class="card-meta"><span>'+esc(d.year)+'</span>'+(d.seasons?'<span>·</span><span>'+esc(d.seasons)+' '+plural(+d.seasons)+'</span>':'')+(tr._countries.length?'<span>·</span><span>'+esc(tr._countries.slice(0,2).join(', '))+(tr._countries.length>2?' +'+(tr._countries.length-2):'')+'</span>':'')+'</div>'+
+        '<div class="card-meta"><span>'+esc(d.year)+'</span>'+(tr._kindFormat?'<span>·</span><span>'+esc(tr._kindFormat)+'</span>':'')+(tr._countries.length?'<span>·</span><span>'+esc(tr._countries.slice(0,2).join(', '))+(tr._countries.length>2?' +'+(tr._countries.length-2):'')+'</span>':'')+'</div>'+
         '<div class="card-ratings">'+ratingChip('am','AM',d.am)+ratingChip('imdb','IMDb',d.imdb)+ratingChip('kp','КП',d.kp)+'</div>'+
         '<div class="card-genres">'+(genres?genres.innerHTML:'')+'</div>'+
         '<p class="card-desc">'+esc(tr._desc)+'</p>'+
@@ -485,7 +508,7 @@ function buildNewStrip(){
         '<img src="'+esc(src)+'"'+(tr._full&&tr._full!==src?' srcset="'+esc(src)+' 200w, '+esc(tr._full)+' 400w" sizes="118px"':'')+' alt="Постер: '+esc(tr._title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'+
       '</span>'+
       '<span class="new-card-title">'+esc(tr._title)+'</span>'+
-      '<span class="new-card-meta">'+esc(d.year)+(d.am?' &middot; AM '+esc(d.am):'')+'</span>';
+      '<span class="new-card-meta">'+esc(d.year)+' &middot; '+esc(tr._kind==='movie'?'фильм':'сериал')+(d.am?' &middot; AM '+esc(d.am):'')+'</span>';
     frag.appendChild(el);
   });
   row.appendChild(frag);
@@ -518,7 +541,8 @@ function ft(){
   var shown=0;
   rows.forEach(function(tr){
     var d=tr.dataset,ok=true;
-    if(q&&tr._search.indexOf(q)<0)ok=false;
+    if(kindFilter!=='all'&&d.kind!==kindFilter)ok=false;
+    if(ok&&q&&tr._search.indexOf(q)<0)ok=false;
     if(ok&&y&&d.year!==y)ok=false;
     if(ok&&g.length){var gs='|'+d.genres+'|';ok=g.some(function(v){return gs.indexOf('|'+v+'|')>=0})}
     if(ok&&x.length){var xs='|'+d.genres+'|';ok=!x.some(function(v){return xs.indexOf('|'+v+'|')>=0})}
@@ -580,9 +604,22 @@ window.rf=function(){
   document.querySelectorAll('.multi-select').forEach(updateMsCount);
   yearFilter.value='';
   closeAllMs();
+  applyKind('all');
   sortState={col:'year',dir:'desc'};
   sortRows();ft();
 };
+
+function applyKind(k){
+  kindFilter=k;
+  document.querySelectorAll('.type-switch button').forEach(function(b){
+    var active=b.dataset.kind===k;
+    b.classList.toggle('active',active);
+    b.setAttribute('aria-pressed',active?'true':'false');
+  });
+}
+document.querySelectorAll('.type-switch button').forEach(function(b){
+  b.addEventListener('click',function(){applyKind(b.dataset.kind);ft()});
+});
 
 function setView(v){
   root.setAttribute('data-view',v);

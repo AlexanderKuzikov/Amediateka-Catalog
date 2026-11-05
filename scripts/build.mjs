@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 
-const DATA_FILE = new URL('../data/series.json', import.meta.url);
+const DATA_FILE = new URL('../data/catalog.json', import.meta.url);
 const TEMPLATE_FILE = new URL('../src/template.html', import.meta.url);
 const OUT_DIR = new URL('../dist/', import.meta.url);
 
@@ -31,6 +31,25 @@ const isNew = d => {
   if (!d.addedAt) return false;
   const t = new Date(d.addedAt).getTime();
   return Number.isFinite(t) && NOW - t <= NEW_MS;
+};
+const pluralSeasons = n => {
+  n = Math.abs(n) % 100;
+  const n1 = n % 10;
+  if (n > 10 && n < 20) return 'сезонов';
+  if (n1 === 1) return 'сезон';
+  if (n1 >= 2 && n1 <= 4) return 'сезона';
+  return 'сезонов';
+};
+const durationText = min => {
+  if (!min) return '';
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return h ? (m ? `${h} ч ${m} мин` : `${h} ч`) : `${m} мин`;
+};
+const kindLabel = d => d.kind === 'movie' ? 'фильм' : 'сериал';
+const formatText = d => {
+  if (d.kind === 'movie') return d.duration ? durationText(d.duration) : 'фильм';
+  return d.seasons ? `${d.seasons} ${pluralSeasons(d.seasons)}` : '\u2014';
 };
 
 items.sort((a, b) => {
@@ -86,7 +105,7 @@ function posterButton(d) {
 function rowHtml(d) {
   const descHtml = d.desc ? `<p class="desc-text">${esc(d.desc)}</p>` : '';
   const genresHtml = d.genres.map(g => `<span class="genre-tag">${esc(g)}</span>`).join('');
-  return `<tr data-id="${d.id}" data-new="${isNew(d) ? '1' : '0'}" data-added="${esc(d.addedAt || '')}" data-genres="${esc(d.genres.join('|'))}" data-countries="${esc((d.countries || []).join('|'))}" data-year="${esc(underscore(d.year))}" data-am="${esc(d.am || '')}" data-imdb="${esc(d.imdb || '')}" data-kp="${esc(d.kp || '')}" data-seasons="${esc(underscore(d.seasons))}" data-url="${esc(d.url)}">
+  return `<tr data-id="${d.id}" data-kind="${esc(d.kind)}" data-new="${isNew(d) ? '1' : '0'}" data-added="${esc(d.addedAt || '')}" data-genres="${esc(d.genres.join('|'))}" data-countries="${esc((d.countries || []).join('|'))}" data-year="${esc(underscore(d.year))}" data-am="${esc(d.am || '')}" data-imdb="${esc(d.imdb || '')}" data-kp="${esc(d.kp || '')}" data-seasons="${esc(underscore(d.seasons))}" data-duration="${esc(underscore(d.duration))}" data-url="${esc(d.url)}">
   <td class="title-col"><div class="title-wrap">
     ${posterButton(d)}
     <div class="title-info"><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.title)}</a>${descHtml}</div>
@@ -96,7 +115,7 @@ function rowHtml(d) {
   <td class="rating-col">${ratingCell(d.am, 'am')}</td>
   <td class="rating-col">${ratingCell(d.imdb, 'imdb')}</td>
   <td class="rating-col">${ratingCell(d.kp, 'kp')}</td>
-  <td class="seasons-col">${esc(underscore(d.seasons))}</td>
+  <td class="seasons-col">${esc(formatText(d))}</td>
 </tr>`;
 }
 
@@ -106,10 +125,12 @@ const date = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', y
 
 const jsonItems = items.map(d => ({
   id: d.id,
+  kind: d.kind,
   title: d.title,
   url: d.url,
   year: d.year,
   seasons: d.seasons,
+  duration: d.duration,
   genres: d.genres,
   countries: d.countries || [],
   am: d.am,
@@ -152,6 +173,7 @@ for (const [name, html] of [['amediateka_catalog.html', staticHtml], ['amediatek
 }
 
 const size = h => (Buffer.byteLength(h, 'utf8') / 1024).toFixed(0) + ' KB';
+const movieCount = items.filter(d => d.kind === 'movie').length;
 console.log(`Static:       dist/amediateka_catalog.html (${size(staticHtml)})`);
 console.log(`JSON-embedded: dist/amediateka_catalog_json.html (${size(jsonHtml)})`);
-console.log(`Series: ${items.length}, genres: ${genresList.length}, countries: ${countriesList.length}, new for 30 days: ${items.filter(isNew).length}, date: ${date}`);
+console.log(`Titles: ${items.length} (${items.length - movieCount} series, ${movieCount} movies), genres: ${genresList.length}, countries: ${countriesList.length}, new for 30 days: ${items.filter(isNew).length}, date: ${date}`);
