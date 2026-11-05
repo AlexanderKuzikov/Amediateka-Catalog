@@ -1,0 +1,16 @@
+{
+  "name": "amediateka-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Статический каталог сериалов Amediateka с ежемесячной сборкой",
+  "license": "MIT",
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "build": "node scripts/build.mjs",
+    "monthly": "node scripts/fetch.mjs && node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
