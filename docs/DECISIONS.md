@@ -61,3 +61,13 @@
 **Альтернативы:** Windows Task Scheduler локально; внешний cron.
 
 **Trade-off:** доступность API с GitHub runner не проверена; при блокировке нужен локальный запуск `npm run monthly`.
+
+## 2026-11-05: Локальный планировщик вместо GitHub Actions
+
+**Контекст:** API Amediateka отдаёт 403 с GitHub runner (гео/антибот), поэтому workflow не может обновлять данные. Заменяет решение о GitHub Actions.
+
+**Решение:** workflow удалён. Обновление выполняет Windows Task Scheduler: ежедневная проверка в 10:17, fetch/build/commit/push только если снимок данных не за текущий месяц. Регистрация — `scripts/install-task.ps1`, пропуск запуска компенсируется `StartWhenAvailable`.
+
+**Альтернативы:** прокси с российским IP, self-hosted runner, внешний cron.
+
+**Trade-off:** автообновление требует включённого ПК и входа пользователя; публичная CI-сборка недоступна.

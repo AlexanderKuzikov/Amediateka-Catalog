@@ -6,6 +6,8 @@
 - fetch: `node scripts/fetch.mjs` — тянет список и детали с API, пишет `data/series.json`
 - build: `node scripts/build.mjs` — собирает оба HTML из `data/series.json` и `src/template.html`
 - monthly: `npm run monthly` — fetch + build
+- force monthly: `powershell -ExecutionPolicy Bypass -File scripts/monthly.ps1 -Force`
+- install task: `powershell -ExecutionPolicy Bypass -File scripts/install-task.ps1` — ежедневная проверка, обновление раз в месяц
 - verify: открыть `dist/amediateka_catalog.html` и `dist/amediateka_catalog_json.html`
 
 ## Conventions
@@ -26,7 +28,8 @@
 - `data/series.json` — снимок данных
 - `dist/amediateka_catalog.html` — статический каталог
 - `dist/amediateka_catalog_json.html` — каталог с JSON внутри HTML
-- `.github/workflows/monthly.yml` — ежемесячная сборка
+- `scripts/monthly.ps1` — ежемесячное обновление с проверкой даты снимка
+- `scripts/install-task.ps1` — регистрация задачи в Windows Task Scheduler
 
 ## Do NOT touch
 
