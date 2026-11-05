@@ -102,13 +102,20 @@ function posterButton(d) {
   return `<button type="button" class="poster" aria-label="${esc('Увеличить постер: ' + d.title)}">${badge}<img src="${esc(thumb)}" alt="${alt}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>`;
 }
 
+const origTitle = d => {
+  const source = (d.originalTitle || '').trim();
+  return source && source.toLowerCase() !== (d.title || '').trim().toLowerCase() ? source : '';
+};
+
 function rowHtml(d) {
   const descHtml = d.desc ? `<p class="desc-text">${esc(d.desc)}</p>` : '';
+  const orig = origTitle(d);
+  const origHtml = orig ? `<span class="orig-title">${esc(orig)}</span>` : '';
   const genresHtml = d.genres.map(g => `<span class="genre-tag">${esc(g)}</span>`).join('');
-  return `<tr data-id="${d.id}" data-kind="${esc(d.kind)}" data-new="${isNew(d) ? '1' : '0'}" data-added="${esc(d.addedAt || '')}" data-genres="${esc(d.genres.join('|'))}" data-countries="${esc((d.countries || []).join('|'))}" data-year="${esc(underscore(d.year))}" data-am="${esc(d.am || '')}" data-imdb="${esc(d.imdb || '')}" data-kp="${esc(d.kp || '')}" data-seasons="${esc(underscore(d.seasons))}" data-duration="${esc(underscore(d.duration))}" data-url="${esc(d.url)}">
+  return `<tr data-id="${d.id}" data-kind="${esc(d.kind)}" data-orig="${esc(orig)}" data-new="${isNew(d) ? '1' : '0'}" data-added="${esc(d.addedAt || '')}" data-genres="${esc(d.genres.join('|'))}" data-countries="${esc((d.countries || []).join('|'))}" data-year="${esc(underscore(d.year))}" data-am="${esc(d.am || '')}" data-imdb="${esc(d.imdb || '')}" data-kp="${esc(d.kp || '')}" data-seasons="${esc(underscore(d.seasons))}" data-duration="${esc(underscore(d.duration))}" data-url="${esc(d.url)}">
   <td class="title-col"><div class="title-wrap">
     ${posterButton(d)}
-    <div class="title-info"><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.title)}</a>${descHtml}</div>
+    <div class="title-info"><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.title)}</a>${origHtml}${descHtml}</div>
   </div></td>
   <td class="genre-col">${genresHtml}</td>
   <td class="year-col">${esc(underscore(d.year))}</td>
@@ -127,6 +134,7 @@ const jsonItems = items.map(d => ({
   id: d.id,
   kind: d.kind,
   title: d.title,
+  originalTitle: d.originalTitle || '',
   url: d.url,
   year: d.year,
   seasons: d.seasons,

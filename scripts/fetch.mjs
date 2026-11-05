@@ -171,6 +171,7 @@ const items = await pool(list, 24, async s => {
     id: s.id,
     kind: s.kind,
     title: clean(src.title || s.title),
+    originalTitle: clean(src.originalTitle || ''),
     slug: s.slug,
     url: SITE + (src.webUrl || s.webUrl || `/watch/${s.kind === 'movie' ? 'movies' : 'series'}_${s.id}_${s.slug}`),
     year: src.premierYear ?? s.premierYear ?? null,

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Каталог сериалов и фильмов Amediateka</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a6dd4'/%3E%3Cpath d='M13 10l10 6-10 6z' fill='%23fff'/%3E%3C/svg%3E">
-<script>try{var t=localStorage.getItem('amediatekaTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');document.documentElement.setAttribute('data-view',localStorage.getItem('amediatekaView')||'grid')}catch(e){document.documentElement.setAttribute('data-view','grid')}</script>
+<script>try{var t=localStorage.getItem('amediatekaTheme')||'light';if(t==='dark')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme','light');document.documentElement.setAttribute('data-view',localStorage.getItem('amediatekaView')||'grid')}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.setAttribute('data-view','grid')}</script>
 <style>
 :root{--bg:#0b0b11;--bg2:#111118;--bg3:#16161f;--bg4:#1b1b28;--bg5:#222232;--border:#232336;--border2:#2c2c42;--border3:#3a3a55;--text:#e8e8f0;--text2:#a0a0b8;--text3:#70708a;--link:#5aa7ff;--link-hover:#82bcff;--tag-bg:rgba(90,167,255,.12);--tag-text:#82bcff;--header-from:#151528;--header-to:#0d2b4f;--hover:rgba(90,167,255,.05);--rating-am:#5aa7ff;--rating-imdb:#f5c518;--rating-kp:#ff7a1a;--heading:#fff;--btn-text:#fff;--card:#12121b;--shadow:0 12px 32px rgba(0,0,0,.4);--thumb-w:84px;--radius:12px}
 [data-theme="light"]{--bg:#f3f3ee;--bg2:#fff;--bg3:#eaeae3;--bg4:#e2e2d9;--bg5:#fff;--border:#dcdcd2;--border2:#cfcfc4;--border3:#b8b8ac;--text:#1d1d1b;--text2:#5a5a52;--text3:#8b8b82;--link:#1a6dd4;--link-hover:#135aaf;--tag-bg:rgba(26,109,212,.1);--tag-text:#1a6dd4;--header-from:#e9e9e1;--header-to:#ccd8e8;--hover:rgba(0,0,0,.035);--rating-am:#1a6dd4;--rating-imdb:#9c7400;--rating-kp:#c45200;--heading:#161616;--btn-text:#fff;--card:#fff;--shadow:0 10px 26px rgba(0,0,0,.12)}
@@ -73,6 +73,7 @@ body.lb-open{overflow:hidden}
 .title-info a{color:var(--link);font-weight:650;font-size:15px;line-height:1.3;text-decoration:none;display:block}
 .title-info a:hover{text-decoration:underline}
 .desc-text{color:var(--text3);font-size:12.5px;line-height:1.45;margin-top:4px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.orig-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:11.5px;color:var(--text3);line-height:1.3;margin-top:2px}
 .genre-col{line-height:1.7}
 .genre-tag{display:inline-block;padding:2px 7px;border-radius:6px;background:var(--tag-bg);color:var(--tag-text);font-size:10.5px;white-space:nowrap;margin:1px 2px 1px 0}
 .rating{font-weight:700;font-size:14px}
@@ -91,6 +92,7 @@ body.col-resizing{cursor:col-resize;user-select:none}
 .card-body{padding:10px 11px 12px;display:flex;flex-direction:column;gap:7px;flex:1;min-height:0}
 .card-title{color:var(--text);font-weight:650;font-size:13.5px;line-height:1.3;text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
 .card-title:hover{color:var(--link)}
+.card-orig{font-size:10.5px;color:var(--text3);line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .card-meta{font-size:11px;color:var(--text3);display:flex;gap:5px;flex-wrap:wrap}
 .card-ratings{display:flex;gap:5px;flex-wrap:wrap}
 .rchip{font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:6px;background:var(--bg3);border:1px solid var(--border2);white-space:nowrap}
@@ -118,6 +120,7 @@ body.col-resizing{cursor:col-resize;user-select:none}
 .new-card{flex:0 0 118px;border:0;background:none;padding:0;text-align:left;color:var(--text);font:inherit;cursor:pointer}
 .new-card .poster{width:118px;border-radius:10px}
 .new-card-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:11.5px;line-height:1.3;margin-top:6px;min-height:2.6em}
+.new-card-orig{font-size:10px;color:var(--text3);line-height:1.2;margin-top:2px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .new-card-meta{font-size:10.5px;color:var(--text3);margin-top:3px}
 .new-badge{position:absolute;left:6px;top:6px;z-index:2;background:var(--link);color:#fff;font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:5px;line-height:1.2}
 .lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -129,6 +132,7 @@ body.col-resizing{cursor:col-resize;user-select:none}
 .lb-poster img{width:100%;height:100%;object-fit:cover;display:block}
 .lb-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;overflow:auto;padding-right:6px}
 .lb-info h2{font-size:20px;line-height:1.25;color:var(--text);font-weight:750}
+.lb-orig{font-size:12.5px;color:var(--text3);line-height:1.35;margin-top:-4px}
 .lb-meta{font-size:12px;color:var(--text3)}
 .lb-genres{display:flex;flex-wrap:wrap;gap:0}
 .lb-ratings{display:flex;gap:6px;flex-wrap:wrap}
@@ -190,7 +194,7 @@ html{--thumb-w:64px}
         <button type="button" id="viewGridBtn" class="active" aria-pressed="true">&#9638; Плитка</button>
         <button type="button" id="viewTableBtn" aria-pressed="false">&#9776; Таблица</button>
       </div>
-      <button type="button" class="theme-toggle" onclick="toggleTheme()" id="themeBtn">&#9790; Тёмная</button>
+      <button type="button" class="theme-toggle" onclick="toggleTheme()" id="themeBtn">&#9788; Светлая</button>
     </div>
   </div>
 </header>
@@ -277,6 +281,7 @@ html{--thumb-w:64px}
     <div class="lb-poster"><img id="lbImg" alt="" decoding="async" referrerpolicy="no-referrer"></div>
     <div class="lb-info">
       <h2 id="lbTitle"></h2>
+      <p class="lb-orig" id="lbOrig" hidden></p>
       <div class="lb-meta" id="lbMeta"></div>
       <div class="lb-genres" id="lbGenres"></div>
       <div class="lb-ratings" id="lbRatings"></div>
@@ -317,6 +322,7 @@ rows.forEach(function(tr){
   var de=tr.querySelector('.desc-text');
   tr._title=a?a.textContent.trim():'';
   tr._desc=de?de.textContent.trim():'';
+  tr._orig=tr.dataset.orig||'';
   tr._countries=(tr.dataset.countries||'').split('|').filter(Boolean);
   tr._kind=tr.dataset.kind||'series';
   tr._seasons=parseInt(tr.dataset.seasons,10)||0;
@@ -326,7 +332,7 @@ rows.forEach(function(tr){
   var im=tr.querySelector('.poster img');
   tr._full=im&&!im.classList.contains('is-placeholder')?im.getAttribute('src').replace('/200x300/','/400x600/'):'';
   if(im&&tr._full)im.setAttribute('data-full',tr._full);
-  tr._search=norm([tr._title,tr._desc,(tr.dataset.genres||'').split('|').join(' '),tr._countries.join(' '),tr._kindFormat,tr.dataset.year].join(' '));
+  tr._search=norm([tr._title,tr._orig,tr._desc,(tr.dataset.genres||'').split('|').join(' '),tr._countries.join(' '),tr._kindFormat,tr.dataset.year].join(' '));
 });
 var cardEls={};
 var sortState={col:'year',dir:'desc'};
@@ -361,9 +367,12 @@ function renderRows(items){
   var frag=document.createDocumentFragment();
   items.forEach(function(d){
     var countries=d.countries||[];
+    var orig=(d.originalTitle||'').trim();
+    if(orig.toLowerCase()===String(d.title||'').trim().toLowerCase())orig='';
     var tr=document.createElement('tr');
     tr.dataset.id=String(d.id);
     tr.dataset.kind=d.kind||'series';
+    tr.dataset.orig=orig;
     tr.dataset.new=d.isNew?'1':'0';
     tr.dataset.added=d.addedAt||'';
     tr.dataset.genres=(d.genres||[]).join('|');
@@ -377,6 +386,7 @@ function renderRows(items){
     tr.dataset.url=d.url||'';
     tr.innerHTML='<td class="title-col"><div class="title-wrap">'+posterMarkup(d)+
       '<div class="title-info"><a href="'+esc(d.url)+'" target="_blank" rel="noopener">'+esc(d.title)+'</a>'+
+      (orig?'<span class="orig-title">'+esc(orig)+'</span>':'')+
       (d.desc?'<p class="desc-text">'+esc(d.desc)+'</p>':'')+'</div></div></td>'+
       '<td class="genre-col">'+(d.genres||[]).map(function(g){return '<span class="genre-tag">'+esc(g)+'</span>'}).join('')+'</td>'+
       '<td class="year-col">'+esc(d.year==null?'':d.year)+'</td>'+
@@ -396,7 +406,7 @@ function applyTheme(t){
   try{localStorage.setItem(THEME_KEY,t)}catch(e){}
 }
 window.toggleTheme=function(){applyTheme(root.getAttribute('data-theme')==='light'?'dark':'light')};
-applyTheme(localStorage.getItem(THEME_KEY)||'dark');
+applyTheme(localStorage.getItem(THEME_KEY)||'light');
 
 function markLoaded(img){var p=img.closest('.poster');if(p)p.classList.add('loaded')}
 function handleImgError(img){
@@ -413,7 +423,7 @@ document.addEventListener('load',function(e){var t=e.target;if(t&&t.tagName==='I
 document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.closest('.poster'))handleImgError(t)},true);
 function initImg(img){if(img.complete){if(img.naturalWidth>0)markLoaded(img);else if(!img.getAttribute('data-stage'))handleImgError(img)}}
 
-var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbTitle=document.getElementById('lbTitle'),lbMeta=document.getElementById('lbMeta'),lbGenres=document.getElementById('lbGenres'),lbRatings=document.getElementById('lbRatings'),lbDesc=document.getElementById('lbDesc'),lbLink=document.getElementById('lbLink'),lbCounter=document.getElementById('lbCounter');
+var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbTitle=document.getElementById('lbTitle'),lbOrig=document.getElementById('lbOrig'),lbMeta=document.getElementById('lbMeta'),lbGenres=document.getElementById('lbGenres'),lbRatings=document.getElementById('lbRatings'),lbDesc=document.getElementById('lbDesc'),lbLink=document.getElementById('lbLink'),lbCounter=document.getElementById('lbCounter');
 var lbRows=[],lbIndex=-1,lastFocus=null;
 
 function ratingChip(cls,label,val){var hint=!val&&(cls==='imdb'||cls==='kp')?' title="Нет рейтинга; при сортировке используется Amediateka"':'';return '<span class="rchip '+cls+(val?'':' na')+'"'+hint+'>'+label+' '+(val?esc(val):'—')+'</span>'}
@@ -422,6 +432,7 @@ function fillLb(tr){
   var src=(tr._full||'').replace('/400x600/','/600x900/')||PLACEHOLDER;
   lbImg.src=src;lbImg.setAttribute('data-src',src);lbImg.alt='Постер: '+tr._title;
   lbTitle.textContent=tr._title;
+  lbOrig.textContent=tr.dataset.orig||'';lbOrig.hidden=!tr.dataset.orig;
   lbMeta.textContent=[d.year,tr._kindFormat,tr._countries.join(', ')].filter(Boolean).join(' · ');
   var gt=tr.querySelector('.genre-col');
   lbGenres.innerHTML=gt?gt.innerHTML:'';
@@ -475,6 +486,7 @@ function buildGrid(){
       '</button>'+
       '<div class="card-body">'+
         '<a class="card-title" href="'+esc(d.url)+'" target="_blank" rel="noopener">'+esc(tr._title)+'</a>'+
+        (tr._orig?'<span class="card-orig">'+esc(tr._orig)+'</span>':'')+
         '<div class="card-meta"><span>'+esc(d.year)+'</span>'+(tr._kindFormat?'<span>·</span><span>'+esc(tr._kindFormat)+'</span>':'')+(tr._countries.length?'<span>·</span><span>'+esc(tr._countries.slice(0,2).join(', '))+(tr._countries.length>2?' +'+(tr._countries.length-2):'')+'</span>':'')+'</div>'+
         '<div class="card-ratings">'+ratingChip('am','AM',d.am)+ratingChip('imdb','IMDb',d.imdb)+ratingChip('kp','КП',d.kp)+'</div>'+
         '<div class="card-genres">'+(genres?genres.innerHTML:'')+'</div>'+
@@ -508,6 +520,7 @@ function buildNewStrip(){
         '<img src="'+esc(src)+'"'+(tr._full&&tr._full!==src?' srcset="'+esc(src)+' 200w, '+esc(tr._full)+' 400w" sizes="118px"':'')+' alt="Постер: '+esc(tr._title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'+
       '</span>'+
       '<span class="new-card-title">'+esc(tr._title)+'</span>'+
+      (tr._orig?'<span class="new-card-orig">'+esc(tr._orig)+'</span>':'')+
       '<span class="new-card-meta">'+esc(d.year)+' &middot; '+esc(tr._kind==='movie'?'фильм':'сериал')+(d.am?' &middot; AM '+esc(d.am):'')+'</span>';
     frag.appendChild(el);
   });

@@ -1,6 +1,6 @@
 {
   "name": "amediateka-catalog",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "description": "Статический каталог сериалов Amediateka с ежемесячной сборкой",

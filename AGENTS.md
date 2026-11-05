@@ -19,6 +19,8 @@
 - Два варианта вывода: статические строки и встроенный JSON (`#catalog-data`).
 - Сортировка IMDb/КП: при отсутствии рейтинга используется AM (Amediateka).
 - Типы: `kind` = `series` | `movie`; фильтруются переключателем, длительность фильма — в минутах.
+- `originalTitle` показывается под русским названием, если отличается; поиск идёт по обоим.
+- Тема по умолчанию светлая; переключение хранится в localStorage.
 - Постеры: приоритет `productPosterV2` → `v_poster` → `productPoster` → `partnersPoster` → `productItemCover`.
 - Капс не используем, обычный регистр. Коммиты на русском, повелительное наклонение.
 
@@ -27,7 +29,7 @@
 - `scripts/fetch.mjs` — сбор данных по сериалам и фильмам (list + detail, страны, рейтинги, длительность, постеры)
 - `scripts/build.mjs` — генерация `dist/*.html`
 - `src/template.html` — общий шаблон UI
-- `data/catalog.json` — снимок данных: 382 сериала и 251 фильм, поле `kind`
+- `data/catalog.json` — снимок данных: 382 сериала и 251 фильм, поля `kind`, `duration`, `originalTitle`
 - `dist/amediateka_catalog.html` — статический каталог
 - `dist/amediateka_catalog_json.html` — каталог с JSON внутри HTML
 - `scripts/monthly.ps1` — ежемесячное обновление с проверкой даты снимка
