@@ -31,6 +31,7 @@
 - `dist/amediateka_catalog_json.html` — каталог с JSON внутри HTML
 - `scripts/monthly.ps1` — ежемесячное обновление с проверкой даты снимка
 - `scripts/install-task.ps1` — регистрация задачи в Windows Task Scheduler
+- `legacy/` — старый PowerShell-конвейер v1–v3, только история, не использовать
 
 ## Do NOT touch
 

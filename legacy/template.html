@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог сериалов Amediateka</title>
+<style id="theme-style">
+:root{--bg:#0d0d12;--bg2:#111118;--bg3:#151520;--bg4:#1a1a2e;--bg5:#1e1e2e;--border:#1e1e2e;--border2:#222;--border3:#333;--border4:#2a2a3e;--text:#e0e0e0;--text2:#888;--text3:#666;--text4:#aaa;--text5:#777;--link:#4a9eff;--link-hover:#3a8eef;--tag-bg:rgba(74,158,255,0.12);--tag-text:#5aaeff;--header-from:#1a1a2e;--header-to:#0f3460;--hover:rgba(74,158,255,0.04);--sorted:#4a9eff;--rating-am:#4a9eff;--rating-imdb:#f5c518;--rating-kp:#ff6600;--white:#fff;--thumb-size:120px}
+[data-theme="light"]{--bg:#f5f5f0;--bg2:#fff;--bg3:#f0f0eb;--bg4:#e8e8e0;--bg5:#fff;--border:#ddd;--border2:#ccc;--border3:#bbb;--border4:#ccc;--text:#222;--text2:#666;--text3:#888;--text4:#888;--text5:#777;--link:#1a6dd4;--link-hover:#1557a8;--tag-bg:rgba(26,109,212,0.1);--tag-text:#1a6dd4;--header-from:#e8e8e0;--header-to:#d0d0c8;--hover:rgba(0,0,0,0.03);--sorted:#1a6dd4;--rating-am:#1a6dd4;--rating-imdb:#b8860b;--rating-kp:#cc5500;--white:#000;--thumb-size:120px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+.header{background:linear-gradient(135deg,var(--header-from) 0%,#16213e 50%,var(--header-to) 100%);padding:20px 16px;text-align:center;border-bottom:1px solid var(--border4);position:relative}
+.header h1{font-size:22px;font-weight:700;color:var(--white);margin-bottom:2px}
+.header p{color:var(--text2);font-size:12px}
+.theme-toggle{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:var(--bg5);border:1px solid var(--border3);color:var(--text);padding:5px 12px;border-radius:20px;cursor:pointer;font-size:12px}
+.theme-toggle:hover{background:var(--bg4)}
+.container{max-width:1500px;margin:0 auto;padding:8px}
+.controls{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;align-items:center;background:var(--bg3);padding:8px 12px;border-radius:8px;border:1px solid var(--border2)}
+.controls input,.controls select{padding:6px 8px;border-radius:5px;border:1px solid var(--border3);background:var(--bg5);color:var(--text);font-size:12px}
+.controls input:focus,.controls select:focus{outline:none;border-color:var(--link)}
+.controls input{flex:1;min-width:140px}
+.multi-select{position:relative;display:inline-block}
+.ms-trigger{padding:6px 8px;border-radius:5px;border:1px solid var(--border3);background:var(--bg5);color:var(--text);font-size:12px;cursor:pointer;white-space:nowrap}
+.ms-trigger:hover{border-color:var(--link)}
+.ms-count{color:var(--link);font-weight:700;margin-left:2px}
+.ms-dropdown{display:none;position:absolute;top:100%;left:0;margin-top:4px;background:var(--bg5);border:1px solid var(--border3);border-radius:5px;padding:6px;min-width:180px;max-height:240px;overflow-y:auto;z-index:200;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.ms-dropdown.open{display:block}
+.ms-dropdown label{display:block;padding:3px 6px;font-size:12px;cursor:pointer;border-radius:3px}
+.ms-dropdown label:hover{background:var(--hover)}
+.ms-dropdown input[type="checkbox"]{margin-right:6px;accent-color:var(--link)}
+.stats-bar{color:var(--text3);font-size:12px;padding:2px 0 6px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px}
+#resetBtn{padding:6px 12px;border-radius:5px;border:none;background:var(--link);color:var(--white);font-size:12px;cursor:pointer}
+#resetBtn:hover{background:var(--link-hover)}
+.table-wrap{border-radius:8px;border:1px solid var(--border);background:var(--bg2);overflow:visible}
+table{width:100%;border-collapse:collapse;min-width:650px;table-layout:fixed}
+thead{position:sticky;top:0;z-index:100}
+th{background:var(--bg4);padding:8px 5px;text-align:center;font-size:11px;letter-spacing:.4px;color:var(--text2);border-bottom:2px solid var(--border4);user-select:none;white-space:nowrap;position:relative;overflow:visible}
+th:hover{color:var(--link)}
+th.sorted{color:var(--sorted)}
+th .resize-handle{position:absolute;right:-3px;top:0;bottom:0;width:12px;cursor:col-resize;background:transparent;z-index:10}
+th .resize-handle:hover{background:rgba(74,158,255,0.3)}
+th .sort-arrows{display:inline-block;margin-left:2px;font-size:8px;color:var(--text3)}
+td{padding:8px 6px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle}
+tr:hover td{background:var(--hover)}
+.title-col{}
+.title-wrap{display:flex;align-items:flex-start;gap:14px}
+.title-wrap img{width:var(--thumb-size);height:var(--thumb-size);object-fit:cover;border-radius:8px;flex-shrink:0;transition:transform .25s,box-shadow .25s;transform-origin:top left;cursor:zoom-in;image-rendering:auto;background:var(--bg4)}
+.title-wrap img:hover{transform:scale(2.5);z-index:200;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.8)}
+.title-info{flex:1;min-width:0}
+.title-info a{color:var(--link);text-decoration:none;font-size:16px;font-weight:600;display:block;margin-bottom:3px}
+.title-info a:hover{text-decoration:underline}
+.title-info .desc-text{font-size:14px;color:var(--text5);font-weight:400;line-height:1.5;margin-top:4px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.genre-col{}
+.genre-tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:11px;background:var(--tag-bg);color:var(--tag-text);margin:2px 1px;white-space:nowrap}
+.rating{font-weight:700;font-size:15px}
+.rating-col{text-align:center}
+.rating-am{color:var(--rating-am)}
+.rating-imdb{color:var(--rating-imdb)}
+.rating-kp{color:var(--rating-kp)}
+.rating-na{color:var(--text4);font-size:12px}
+.year-col{color:var(--text4);text-align:center}
+.seasons-col{color:var(--text4);text-align:center}
+.hidden{display:none!important}
+.resize-ghost{position:fixed;top:0;bottom:0;width:2px;background:var(--link);z-index:9999;pointer-events:none}
+@media(max-width:900px){.table-wrap{overflow-x:auto}}
+@media(max-width:768px){.container{padding:4px}td,th{padding:5px 3px;font-size:12px}.title-wrap{gap:10px}.title-wrap img{width:80px;height:80px}.title-info a{font-size:14px}.title-info .desc-text{font-size:12px}.genre-tag{font-size:10px}.theme-toggle{position:static;transform:none;margin-top:6px}.header h1{font-size:17px}}
+@media(max-width:480px){.controls{flex-direction:column}.controls input{width:100%;min-width:unset}th{font-size:9px;padding:3px 1px}td{font-size:11px;padding:3px 2px}.title-wrap img{width:56px;height:56px}.title-wrap{gap:6px}.title-info a{font-size:12px}.title-info .desc-text{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>&#128250; Каталог сериалов Amediateka</h1>
+<p>Всего сериалов: <span id="totalCount">__COUNT__</span> &middot; данные на 18 июля 2026</p>
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">&#9790; Тёмная</button>
+</div>
+<div class="container">
+<div class="controls">
+<input type="text" id="searchInput" placeholder="Поиск по названию, жанру, описанию..." oninput="ft()">
+<div class="multi-select" id="genreFilter">
+  <button class="ms-trigger" onclick="toggleMs('genreFilter')">Жанры <span class="ms-count"></span></button>
+  <div class="ms-dropdown">__GENRES_CHECKBOXES__</div>
+</div>
+<div class="multi-select" id="excludeFilter">
+  <button class="ms-trigger" onclick="toggleMs('excludeFilter')">Исключить <span class="ms-count"></span></button>
+  <div class="ms-dropdown">__GENRES_CHECKBOXES__</div>
+</div>
+<select id="yearFilter" onchange="ft()"><option value="">Все годы</option>__YEARS__</select>
+<select id="sortSelect" onchange="as()">
+<option value="year-desc">По году &darr;</option>
+<option value="year-asc">По году &uarr;</option>
+<option value="ratingAm-desc">По рейтингу Amediateka &darr;</option>
+<option value="ratingAm-asc">По рейтингу Amediateka &uarr;</option>
+<option value="ratingImdb-desc">По рейтингу IMDB &darr;</option>
+<option value="ratingImdb-asc">По рейтингу IMDB &uarr;</option>
+<option value="ratingKp-desc">По рейтингу Кинопоиск &darr;</option>
+<option value="ratingKp-asc">По рейтингу Кинопоиск &uarr;</option>
+<option value="title-asc">По названию А-Я</option>
+<option value="title-desc">По названию Я-А</option>
+<option value="seasons-desc">По сезонам &darr;</option>
+</select>
+<button id="resetBtn" onclick="rf()">Сброс</button>
+</div>
+<div class="stats-bar"><span id="stats">Показано: <b>__COUNT__</b> из __COUNT__</span><span>Тащи границы колонок &middot; клик по заголовку для сортировки</span></div>
+<div class="table-wrap">
+<table id="seriesTable">
+<thead><tr>
+<th data-col="title" onclick="sb('title')" class="sorted" style="width:460px"><span>Название</span><span class="sort-arrows"></span><div class="resize-handle" data-col="title"></div></th>
+<th data-col="genre" onclick="sb('genre')" style="width:200px"><span>Жанры</span><span class="sort-arrows"></span><div class="resize-handle" data-col="genre"></div></th>
+<th data-col="year" onclick="sb('year')" style="width:60px"><span>Год</span><span class="sort-arrows"></span><div class="resize-handle" data-col="year"></div></th>
+<th data-col="ratingAm" onclick="sb('ratingAm')" style="width:90px"><span>Amediateka</span><span class="sort-arrows"></span><div class="resize-handle" data-col="ratingAm"></div></th>
+<th data-col="ratingImdb" onclick="sb('ratingImdb')" style="width:76px"><span>IMDB</span><span class="sort-arrows"></span><div class="resize-handle" data-col="ratingImdb"></div></th>
+<th data-col="ratingKp" onclick="sb('ratingKp')" style="width:90px"><span>Кинопоиск</span><span class="sort-arrows"></span><div class="resize-handle" data-col="ratingKp"></div></th>
+<th data-col="seasons" onclick="sb('seasons')" style="width:60px"><span>Сезонов</span><span class="sort-arrows"></span><div class="resize-handle" data-col="seasons"></div></th>
+</tr></thead>
+<tbody id="tableBody">__ROWS__</tbody>
+</table>
+</div>
+</div>
+<script>
+var theme=localStorage.getItem('amediatekaTheme')||'dark';
+if(theme==='light'){document.documentElement.setAttribute('data-theme','light')}
+function toggleTheme(){var t=document.documentElement.getAttribute('data-theme'),n=t==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('amediatekaTheme',n);document.getElementById('themeBtn').innerHTML=n==='light'?'&#9788; Светлая':'&#9790; Тёмная'}
+document.getElementById('themeBtn').innerHTML=theme==='light'?'&#9788; Светлая':'&#9790; Тёмная';
+
+// Column resizing - uses cellIndex to find matching td
+(function(){
+  var a=false,sx,sw,co,gh,colIndex=-1;
+  var ths=document.querySelectorAll('#seriesTable th');
+  function findCol(name){for(var i=0;i<ths.length;i++){if(ths[i].dataset.col===name)return i}return -1}
+  function applyWidth(name,nw){
+    var i=findCol(name);
+    if(i<0)return;
+    if(ths[i])ths[i].style.width=nw+'px';
+    document.querySelectorAll('#seriesTable tbody tr').forEach(function(tr){
+      var cell=tr.children[i];
+      if(cell)cell.style.width=nw+'px';
+    });
+  }
+  document.querySelectorAll('.resize-handle').forEach(function(h){
+    h.addEventListener('mousedown',function(e){
+      e.stopPropagation();e.preventDefault();
+      co=h.dataset.col;
+      colIndex=findCol(co);
+      if(colIndex<0)return;
+      sw=ths[colIndex].getBoundingClientRect().width;
+      sx=e.clientX;
+      a=true;
+      gh=document.createElement('div');
+      gh.className='resize-ghost';
+      gh.style.left=e.clientX+'px';
+      document.body.appendChild(gh);
+      document.body.style.cursor='col-resize';
+    })
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!a)return;
+    if(gh)gh.style.left=e.clientX+'px';
+  });
+  document.addEventListener('mouseup',function(e){
+    if(!a)return;
+    a=false;
+    document.body.style.cursor='';
+    if(gh){gh.remove();gh=null}
+    var d=e.clientX-sx;
+    var minW=40;
+    if(ths[colIndex]){var ms=window.getComputedStyle(ths[colIndex]).minWidth;minW=parseInt(ms)||40}
+    var nw=Math.max(Math.round(sw+d),minW);
+    applyWidth(co,nw);
+    localStorage.setItem('colWidth_'+co,nw);
+  });
+  // Restore saved widths
+  document.querySelectorAll('th[data-col]').forEach(function(th){
+    var s=localStorage.getItem('colWidth_'+th.dataset.col);
+    if(s)applyWidth(th.dataset.col,parseInt(s));
+  });
+})();
+
+var cs={col:"title",dir:"desc"};
+function toggleMs(id){var dd=document.querySelector('#'+id+' .ms-dropdown');dd.classList.toggle('open');if(dd.classList.contains('open')){dd.scrollTop=0}}
+function getSelected(id){var cbs=document.querySelectorAll('#'+id+' input[type="checkbox"]:checked'),vals=[];cbs.forEach(function(cb){vals.push(cb.value)});return vals}
+function updateMsCount(id){var sel=getSelected(id),cnt=document.querySelector('#'+id+' .ms-count');cnt.textContent=sel.length>0?' ('+sel.length+')':''}
+document.addEventListener('click',function(e){if(!e.target.closest('.multi-select')){document.querySelectorAll('.ms-dropdown.open').forEach(function(d){d.classList.remove('open')})}});
+document.querySelectorAll('.ms-dropdown input[type="checkbox"]').forEach(function(cb){cb.addEventListener('change',function(){updateMsCount(this.closest('.multi-select').id);ft()})});
+function ft(){var s=document.getElementById('searchInput').value.toLowerCase(),g=getSelected('genreFilter'),x=getSelected('excludeFilter'),y=document.getElementById('yearFilter').value,rows=document.querySelectorAll('#tableBody tr'),v=0;rows.forEach(function(r){var t=r.textContent.toLowerCase();var genres=r.getAttribute('data-genres')||'';var yc=(r.querySelector('.year-col')||{}).textContent.trim()||'';var ms=!s||t.indexOf(s)>=0;var mg=g.length===0||g.some(function(v){return genres.split('|').indexOf(v)>=0});var mx=x.length===0||x.every(function(v){return genres.split('|').indexOf(v)<0});var my=!y||yc===y;if(ms&&mg&&mx&&my){r.classList.remove('hidden');v++}else r.classList.add('hidden')});document.getElementById('stats').innerHTML='Показано: <b>'+v+'</b> из '+rows.length}
+function rf(){document.getElementById('searchInput').value='';document.querySelectorAll('.ms-dropdown input[type="checkbox"]').forEach(function(cb){cb.checked=false});document.querySelectorAll('.ms-count').forEach(function(c){c.textContent=''});document.getElementById('yearFilter').value='';document.getElementById('sortSelect').value='title-desc';cs={col:'title',dir:'desc'};as();ft()}
+function sb(col){if(cs.col===col)cs.dir=cs.dir==='asc'?'desc':'asc';else{cs.col=col;cs.dir='desc'}document.getElementById('sortSelect').value=col+'-'+cs.dir;as();document.querySelectorAll('th').forEach(function(t){t.classList.remove('sorted')});var h=document.querySelector('th[data-col="'+col+'"]');if(h)h.classList.add('sorted')}
+function as(){var v=document.getElementById('sortSelect').value,p=v.split('-'),col=p[0],dir=p[1];cs={col:col,dir:dir};var tb=document.getElementById('tableBody'),rows=Array.from(tb.querySelectorAll('tr'));var rs={ratingAm:'.rating-am',ratingImdb:'.rating-imdb',ratingKp:'.rating-kp'};rows.sort(function(a,b){var av,bv,asc=dir==='asc';switch(col){case'title':av=(a.querySelector('.title-info a')||{}).textContent||'';bv=(b.querySelector('.title-info a')||{}).textContent||'';return asc?av.localeCompare(bv):bv.localeCompare(av);case'genre':av=(a.querySelector('.genre-col')||{}).textContent||'';bv=(b.querySelector('.genre-col')||{}).textContent||'';return asc?av.localeCompare(bv):bv.localeCompare(av);case'year':av=parseInt((a.querySelector('.year-col')||{}).textContent)||0;bv=parseInt((b.querySelector('.year-col')||{}).textContent)||0;return asc?av-bv:bv-av;case'ratingAm':case'ratingImdb':case'ratingKp':var sel=rs[col];av=parseFloat((a.querySelector(sel)||{}).textContent)||-1;bv=parseFloat((b.querySelector(sel)||{}).textContent)||-1;return asc?av-bv:bv-av;case'seasons':av=parseInt((a.querySelector('.seasons-col')||{}).textContent)||0;bv=parseInt((b.querySelector('.seasons-col')||{}).textContent)||0;return asc?av-bv:bv-av;default:return 0}});rows.forEach(function(r){tb.appendChild(r)});ft()}
+window.addEventListener('load',function(){ft();var h=document.querySelector('th[data-col="title"]');if(h)h.classList.add('sorted')});
+</script>
+</body>
+</html>
