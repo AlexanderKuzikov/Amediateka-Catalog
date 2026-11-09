@@ -1,6 +1,6 @@
 {
   "source": "https://api.amediateka.tech/gateway/v1/cms/content/",
-  "updatedAt": "2026-11-08T05:17:43.049Z",
+  "updatedAt": "2026-11-09T05:50:32.747Z",
   "count": 633,
   "countries": [
     "Австралия",
@@ -955,8 +955,8 @@
       "imdb": "6.8",
       "kp": "6.7",
       "desc": "Документальная биография Джерри Вайнтрауба, легендарного продюсера и музыкального промоутера, рассказанная им самим и его близкими",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/3/d4/0e519ed0f85d79e2ec47b853b2cef3d4-81430-c4513fc0678a479e99c644e3f633e357.jpg",
-      "posterAsset": "v_poster",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/b/85/7c440926c281250cc37d65e0c6fbeb85-593852-9340647503f1435e81ee4b4310d17fc3.jpg",
+      "posterAsset": "productPosterV2",
       "addedAt": "2015-11-19T22:45:38.000Z"
     },
     {
@@ -2049,8 +2049,8 @@
       "imdb": "6.4",
       "kp": "6.5",
       "desc": "Александра Пелоси отправляется в путешествие по США, чтобы понять, как американцы относятся к таким явлениям, как иммиграция и расизм",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/a/a1/6ee0698a176109a379b2b1bfb9e89aa1-11576-bcb234fa22dc4eab878e0b7c56905171.jpg",
-      "posterAsset": "productPoster",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/c/c8/ccb7a265c1292b1f89d399088af74cc8-593827-11343f9b9d8d48f7afd13179fbdb04f1.jpg",
+      "posterAsset": "productPosterV2",
       "addedAt": "2019-04-17T00:01:12.000Z"
     },
     {
@@ -3565,7 +3565,7 @@
       "countries": [
         "США"
       ],
-      "am": "4.9",
+      "am": "5.0",
       "imdb": "5.2",
       "kp": "5.3",
       "desc": "Дарлин Хэйген, женщина, долго боровшаяся с алкоголизмом после исчезновения дочери, на Рождество сталкивается с бывшим мужем сестры, который приносит мрачный секрет, переворачивающий их жизни",
@@ -4346,7 +4346,7 @@
         "Канада",
         "Мальта"
       ],
-      "am": "8.2",
+      "am": "8.1",
       "imdb": "5.6",
       "kp": "5.8",
       "desc": "Экранизация одной из самых узнаваемых видеоигр переносит зрителей в мир легендарных искусных убийц и открывает историю, в которой древние традиции и современная наука сталкиваются лицом к лицу",
@@ -4839,7 +4839,7 @@
       "countries": [
         "США"
       ],
-      "am": "8.7",
+      "am": "8.3",
       "imdb": "4.6",
       "kp": "5.7",
       "desc": "Новая глава приключений пушистых музыкантов",
@@ -4919,7 +4919,7 @@
         "США",
         "Великобритания"
       ],
-      "am": "8.6",
+      "am": "8.7",
       "imdb": "6.8",
       "kp": "6.4",
       "desc": "В результате перестрелки с полицией четверо воров погибают при попытке вооруженного ограбления в Чикаго",
@@ -5047,7 +5047,7 @@
       "countries": [
         "США"
       ],
-      "am": "8.4",
+      "am": "8.5",
       "imdb": "6.1",
       "kp": "7.2",
       "desc": "Романтическая комедия о вынужденном браке с Кэмерон Диас и Эштоном Кутчером в главных ролях",
@@ -5339,7 +5339,7 @@
       "countries": [
         "США"
       ],
-      "am": "8.8",
+      "am": "8.9",
       "imdb": "5.5",
       "kp": "6.8",
       "desc": "Случайный поцелуй переворачивает жизнь Эшли вверх дном: удача исчезает, а за ней приходит полнейший хаос",
@@ -5393,7 +5393,7 @@
       "countries": [
         "США"
       ],
-      "am": "8.7",
+      "am": "8.8",
       "imdb": "5.9",
       "kp": "7.1",
       "desc": "Семейная комедия с Эштоном Кутчером и Берни Маком, в которой сталкиваются два разных мира",
@@ -5609,7 +5609,7 @@
         "США",
         "Канада"
       ],
-      "am": "7.7",
+      "am": "7.8",
       "imdb": "5.4",
       "kp": "6.0",
       "desc": "Мы позвали бы взрослых, но взрослые — это мы. А наш чердак захвачен пришельцами…",
@@ -5738,7 +5738,7 @@
       "countries": [
         "США"
       ],
-      "am": "7.9",
+      "am": "8.0",
       "imdb": "6.6",
       "kp": "6.4",
       "desc": "Байкерская драма, в которой рев мотора заглушает биение сердца",
@@ -5893,7 +5893,7 @@
       "countries": [
         "США"
       ],
-      "am": "2.5",
+      "am": "2.4",
       "imdb": null,
       "kp": null,
       "desc": "В недалеком будущем секретный агент обнаруживает, что ее тело было превращено в настоящее оружие",
@@ -5972,7 +5972,7 @@
       "countries": [
         "Великобритания"
       ],
-      "am": "2.4",
+      "am": "2.3",
       "imdb": null,
       "kp": null,
       "desc": "Фолк-хоррор, в котором убитые горем родители идут на всё, чтобы оживить умершего сына",
@@ -6343,7 +6343,7 @@
         "США",
         "Великобритания"
       ],
-      "am": "6.4",
+      "am": "6.5",
       "imdb": null,
       "kp": null,
       "desc": "Гангстер Уайти Балджер заключает сделку с ФБР и превращается в самого опасного преступника Бостона",
@@ -10173,7 +10173,7 @@
       "kp": "7.0",
       "desc": "Напряженный детективный сериал из Новой Зеландии, в котором двум совершенно разным героям придется объединиться ради спасения мирных жителей",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/c/6f/0f9a7a1cff22b0c7e9576e40a37f2c6f-251237-1f194fd33f404d6f9e21f04b31e7a348.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2023-09-26T12:47:23.000Z"
     },
     {
@@ -10269,7 +10269,7 @@
       "kp": "7.1",
       "desc": "Создатели передачи «Необъяснимое рядом» собрали самые интересные видеоролики, которые им присылали свидетели чего-то странного",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/9/cd/b435148b4c809f69ffa1cc4d000459cd-186429-f18c9b9dc73f469680fd391923515af8.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2023-09-25T21:00:00.000Z"
     },
     {
@@ -10916,7 +10916,7 @@
       "countries": [
         "Израиль"
       ],
-      "am": "8.6",
+      "am": "8.7",
       "imdb": "8.0",
       "kp": "7.5",
       "desc": "Необычный взгляд на женскую дружбу и любовный треугольник в современном мире",
@@ -11492,7 +11492,7 @@
       "countries": [
         "США"
       ],
-      "am": "8.5",
+      "am": "8.6",
       "imdb": "7.6",
       "kp": "7.4",
       "desc": "Трагикомичный сериал о приключениях меланхоличного бородача-серфера Дада, который пытается найти себя в новых обстоятельствах",
@@ -15570,7 +15570,7 @@
       "kp": "7.2",
       "desc": "Детективу-призраку придется расследовать собственное убийство, чтобы спасти возлюбленную",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/2/46/6b0b2187c83e38120202165f28d42246-414398-a7d916daf1304684a5210bed86faa9db.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-02-06T10:21:45.000Z"
     },
     {
@@ -15598,7 +15598,7 @@
       "kp": "6.7",
       "desc": "Спин-офф главной зомби-франшизы современности, рассказывающий о первых днях апокалипсиса",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/3/31/fd29779c060c1bdebfb5b4ff77402331-510113-a018ab5fdb9e470893c05443cf4438d6.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-02-11T10:09:13.000Z"
     },
     {
@@ -15624,7 +15624,7 @@
       "kp": "8.0",
       "desc": "История о современных Робинах Гудах, которые считают, что нечестно заработанными деньгами нужно обязательно делиться",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/e/fe/dfd63c15313c2158c36bd4bba5c19efe-471696-e31225710ed44ae0a9a90601360515c8.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-02-24T10:37:48.000Z"
     },
     {
@@ -15649,7 +15649,7 @@
       "kp": null,
       "desc": "Драматический комедийный триллер о нелегкой жизни богатых и влиятельных с Заком Галифианакисом в одной из главных ролей",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/0/0a/14e06d1129880cb877cc21ac510a200a-447977-ee9aea09ba8740c487b41fb1bb2178ae.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-03-19T08:00:35.000Z"
     },
     {
@@ -15675,7 +15675,7 @@
       "kp": null,
       "desc": "Напряженное аниме об азарте и жажде денег, в котором драма и триллер искусно переплетаются",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/9/bc/2b9d887c37c7069cd2be952a8ebff9bc-486038-bb32a1024c4c416e814d5175ebfc0036.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-04-01T08:14:17.000Z"
     },
     {
@@ -15730,7 +15730,7 @@
       "kp": null,
       "desc": "Парень с головой крокодила и эффектная девушка путешествуют по Дыре, расправляясь с магами всех мастей",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/7/17/6c4518b8a0e7429c9785218c281ba717-512859-0baadddc11a24927875b519ed58bdcfa.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-04-12T12:15:00.000Z"
     },
     {
@@ -15756,7 +15756,7 @@
       "kp": null,
       "desc": "Группа благородных мошенников возвращается спустя десять лет с последнего дела и вновь помогает жертвам других воров",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/6/6a/d58fd46d44c7af45cc20f1487eefd66a-515277-bad58bac3b0d4b61b777d4107a4663bc.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-04-28T11:23:14.000Z"
     },
     {
@@ -15784,7 +15784,7 @@
       "kp": null,
       "desc": "Шпион, наемная убийца и девочка-телепат пытаются изобразить приличную семью ради спасения мира, но всё идет не по плану…",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/a/76/83c382737cfac69d6b6c5e36cc801a76-537295-9d9bdba2bd9c470f92d9b0dee50da18b.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-05-25T09:16:32.000Z"
     },
     {
@@ -15833,7 +15833,7 @@
       "kp": null,
       "desc": "Ироничное и теплое драмеди о жизни в большом городе, трудностях взросления и семейных ценностях",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/8/1a/0eb36506dcb1512143b41fe284d9d81a-551443-d65c1e44f60944269677d4156fed444f.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-07-09T19:32:00.000Z"
     },
     {
@@ -15855,12 +15855,12 @@
       "countries": [
         "Япония"
       ],
-      "am": "6.0",
+      "am": "6.2",
       "imdb": null,
       "kp": null,
       "desc": "Первая любовь, юношеские отношения и совсем не детские проблемы из жизни японских старшеклассников",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/a/cc/aea9f98303a85775f6fd1e5b5b82eacc-540819-6df562cdd1294dee877aa7463038f709.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-06-17T08:49:54.000Z"
     },
     {
@@ -15935,7 +15935,7 @@
       "kp": null,
       "desc": "Супершпионка решает начать жить с нового листа и стать матерью, однако старые враги начали на нее охоту…",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/f/40/a3d85658622c09d66fb9baf19314cf40-556206-0aa9dab4f48a475eb452ccc06010508e.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-07-09T18:56:06.000Z"
     },
     {
@@ -15961,7 +15961,7 @@
       "kp": null,
       "desc": "Король демонов, младенец и восставшая из мертвых девушка отправляются в долгое и опасное путешествие",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/c/24/491da8e0679c239b739949fad7d2ec24-555149-e4b4a991635542d494f7380eb619f00e.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-07-07T15:34:23.000Z"
     },
     {
@@ -15985,7 +15985,7 @@
       "kp": null,
       "desc": "Напряженный мини-сериал о поисках серийного убийцы в шотландской глуши",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/0/10/bd5d419e25e2d3fb37c0b92a65e99010-554649-9fe01574451b48498e78c732def5368c.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-07-07T10:03:45.000Z"
     },
     {
@@ -16010,7 +16010,7 @@
       "kp": null,
       "desc": "Криминальная драма, сюжет которой основан на реальной истории ирландской преступной группировки «Вестис»",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/8/bd/1891cf3dde500e83313d52031e8b08bd-556900-d62b19a10bc64a549bd8131f35f74a6f.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2026-07-08T12:12:00.000Z"
     },
     {
@@ -16052,7 +16052,7 @@
       "countries": [
         "Россия"
       ],
-      "am": "6.1",
+      "am": "6.2",
       "imdb": null,
       "kp": null,
       "desc": "Переезд должен был спасти следователя Кирсанова от бандитов, но вместо спокойной жизни его ждет охота на маньяка",
@@ -16105,7 +16105,7 @@
         "Великобритания",
         "Испания"
       ],
-      "am": "7.7",
+      "am": "7.8",
       "imdb": null,
       "kp": null,
       "desc": "Бывшая контрабандистка меняет правила игры: охотники становятся жертвами",
@@ -16313,7 +16313,7 @@
         "Великобритания",
         "Ирландия"
       ],
-      "am": "8.5",
+      "am": "8.1",
       "imdb": null,
       "kp": null,
       "desc": "Вышедший из комы гангстер втягивает медсестру и угонщика в опасную охоту за кельтским золотом",
