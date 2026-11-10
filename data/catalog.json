@@ -1,7 +1,7 @@
 {
   "source": "https://api.amediateka.tech/gateway/v1/cms/content/",
-  "updatedAt": "2026-11-09T05:50:32.747Z",
-  "count": 633,
+  "updatedAt": "2026-11-10T05:18:32.113Z",
+  "count": 634,
   "countries": [
     "Австралия",
     "Бельгия",
@@ -494,8 +494,8 @@
       "imdb": "7.2",
       "kp": "7.1",
       "desc": "Телевизионный фильм о причинах финансового кризиса 2008 года, крупнейшей экономической катастрофе XXI века. Основано на реальных событиях",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/0/b2/b863a06292025420acf964cab2d4d0b2-81604-65edd503f3aa4c22bb551afa007fdfae.jpg",
-      "posterAsset": "v_poster",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/d/2c/3e28acd011206f1ba5556d1e27a53d2c-593898-8711346adc314c7790b7ed8aced83e8b.jpg",
+      "posterAsset": "productPosterV2",
       "addedAt": "2014-09-10T12:32:17.000Z"
     },
     {
@@ -3242,7 +3242,7 @@
       "countries": [
         "США"
       ],
-      "am": "8.4",
+      "am": "8.3",
       "imdb": "8.4",
       "kp": "8.0",
       "desc": "Захватывающее путешествие по улицам и тюрьмам Ньюарка",
@@ -3515,7 +3515,7 @@
       "countries": [
         "США"
       ],
-      "am": "7.3",
+      "am": "7.2",
       "imdb": "6.3",
       "kp": "6.9",
       "desc": "Мальчик встречает дух веселой и отважной девушки 1920-х годов, после чего между ними возникает необычная, но глубокая связь сквозь десятилетия",
@@ -5188,7 +5188,7 @@
         "Австралия",
         "Канада"
       ],
-      "am": "7.1",
+      "am": "7.0",
       "imdb": "5.5",
       "kp": "6.1",
       "desc": "Идеальный брак превращается в опасную игру, где любовь и убийство идут рука об руку",
@@ -5972,7 +5972,7 @@
       "countries": [
         "Великобритания"
       ],
-      "am": "2.3",
+      "am": "2.2",
       "imdb": null,
       "kp": null,
       "desc": "Фолк-хоррор, в котором убитые горем родители идут на всё, чтобы оживить умершего сына",
@@ -6662,7 +6662,7 @@
       "kp": "8.3",
       "desc": "Один из самых популярных криминальных сериалов – история судмедэксперта в полиции Майами, который по совместительству еще и серийный убийца",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/8/f6/aaa760d611b006e67f1f0c4b804c58f6-102142-7dffa149ab94491ab3cc20189a4cc25f.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2024-11-01T14:38:00.000Z"
     },
     {
@@ -7622,7 +7622,7 @@
       "kp": "7.7",
       "desc": "Сериал о мире, в котором вампиры заявили о себе и стали частью общества. Да, они не такие, как мы, но они тоже хотят равенства",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/3/5d/37571e4167efe447e96bf0e28363d35d-50675-cea6987f4bc9472b81925d0bf4f1c22a.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2019-04-09T06:49:44.000Z"
     },
     {
@@ -7676,7 +7676,7 @@
       "kp": "8.3",
       "desc": "Джон Текери (Клайв Оуэн) работает хирургом в больнице, где применяют передовые методы задолго до изобретения лазерного скальпеля и МРТ",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/e/99/73ed3f078b4b3813efe8e17116d95e99-50349-87f09dabd9cf44c3adf1baef116c6626.jpg",
-      "posterAsset": "productPosterV2",
+      "posterAsset": "productPosterV2-unverified",
       "addedAt": "2019-04-09T10:03:56.000Z"
     },
     {
@@ -10173,7 +10173,7 @@
       "kp": "7.0",
       "desc": "Напряженный детективный сериал из Новой Зеландии, в котором двум совершенно разным героям придется объединиться ради спасения мирных жителей",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/c/6f/0f9a7a1cff22b0c7e9576e40a37f2c6f-251237-1f194fd33f404d6f9e21f04b31e7a348.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2023-09-26T12:47:23.000Z"
     },
     {
@@ -10269,7 +10269,7 @@
       "kp": "7.1",
       "desc": "Создатели передачи «Необъяснимое рядом» собрали самые интересные видеоролики, которые им присылали свидетели чего-то странного",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/9/cd/b435148b4c809f69ffa1cc4d000459cd-186429-f18c9b9dc73f469680fd391923515af8.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2023-09-25T21:00:00.000Z"
     },
     {
@@ -10916,7 +10916,7 @@
       "countries": [
         "Израиль"
       ],
-      "am": "8.7",
+      "am": "8.6",
       "imdb": "8.0",
       "kp": "7.5",
       "desc": "Необычный взгляд на женскую дружбу и любовный треугольник в современном мире",
@@ -15570,7 +15570,7 @@
       "kp": "7.2",
       "desc": "Детективу-призраку придется расследовать собственное убийство, чтобы спасти возлюбленную",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/2/46/6b0b2187c83e38120202165f28d42246-414398-a7d916daf1304684a5210bed86faa9db.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-02-06T10:21:45.000Z"
     },
     {
@@ -15598,7 +15598,7 @@
       "kp": "6.7",
       "desc": "Спин-офф главной зомби-франшизы современности, рассказывающий о первых днях апокалипсиса",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/3/31/fd29779c060c1bdebfb5b4ff77402331-510113-a018ab5fdb9e470893c05443cf4438d6.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-02-11T10:09:13.000Z"
     },
     {
@@ -15624,7 +15624,7 @@
       "kp": "8.0",
       "desc": "История о современных Робинах Гудах, которые считают, что нечестно заработанными деньгами нужно обязательно делиться",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/e/fe/dfd63c15313c2158c36bd4bba5c19efe-471696-e31225710ed44ae0a9a90601360515c8.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-02-24T10:37:48.000Z"
     },
     {
@@ -15649,7 +15649,7 @@
       "kp": null,
       "desc": "Драматический комедийный триллер о нелегкой жизни богатых и влиятельных с Заком Галифианакисом в одной из главных ролей",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/0/0a/14e06d1129880cb877cc21ac510a200a-447977-ee9aea09ba8740c487b41fb1bb2178ae.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-03-19T08:00:35.000Z"
     },
     {
@@ -15675,8 +15675,35 @@
       "kp": null,
       "desc": "Напряженное аниме об азарте и жажде денег, в котором драма и триллер искусно переплетаются",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/9/bc/2b9d887c37c7069cd2be952a8ebff9bc-486038-bb32a1024c4c416e814d5175ebfc0036.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-04-01T08:14:17.000Z"
+    },
+    {
+      "id": 60482,
+      "kind": "series",
+      "title": "Дом с прислугой",
+      "originalTitle": "Servant",
+      "slug": "dom-s-prislugoj",
+      "url": "https://www.amediateka.ru/watch/series_60482_dom-s-prislugoj",
+      "year": 2019,
+      "seasons": 4,
+      "duration": null,
+      "genres": [
+        "Триллер",
+        "Фэнтези",
+        "Детектив",
+        "Драма"
+      ],
+      "countries": [
+        "США"
+      ],
+      "am": "8.7",
+      "imdb": null,
+      "kp": null,
+      "desc": "Мистический сериал, созданный М. Найтом Шьямаланом («Шестое чувство»), о семье, которая нанимает няню для заботы о… кукле",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/b/21/4c5a93fd8d9e00b6e1635f7e6d913b21-532452-f53c2cc5b23044398851a42c2dcd2b07.jpg",
+      "posterAsset": "productPosterV2",
+      "addedAt": "2026-04-03T07:03:30.000Z"
     },
     {
       "id": 60487,
@@ -15730,7 +15757,7 @@
       "kp": null,
       "desc": "Парень с головой крокодила и эффектная девушка путешествуют по Дыре, расправляясь с магами всех мастей",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/7/17/6c4518b8a0e7429c9785218c281ba717-512859-0baadddc11a24927875b519ed58bdcfa.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-04-12T12:15:00.000Z"
     },
     {
@@ -15756,7 +15783,7 @@
       "kp": null,
       "desc": "Группа благородных мошенников возвращается спустя десять лет с последнего дела и вновь помогает жертвам других воров",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/6/6a/d58fd46d44c7af45cc20f1487eefd66a-515277-bad58bac3b0d4b61b777d4107a4663bc.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-04-28T11:23:14.000Z"
     },
     {
@@ -15784,7 +15811,7 @@
       "kp": null,
       "desc": "Шпион, наемная убийца и девочка-телепат пытаются изобразить приличную семью ради спасения мира, но всё идет не по плану…",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/a/76/83c382737cfac69d6b6c5e36cc801a76-537295-9d9bdba2bd9c470f92d9b0dee50da18b.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-05-25T09:16:32.000Z"
     },
     {
@@ -15833,7 +15860,7 @@
       "kp": null,
       "desc": "Ироничное и теплое драмеди о жизни в большом городе, трудностях взросления и семейных ценностях",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/8/1a/0eb36506dcb1512143b41fe284d9d81a-551443-d65c1e44f60944269677d4156fed444f.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-07-09T19:32:00.000Z"
     },
     {
@@ -15855,12 +15882,12 @@
       "countries": [
         "Япония"
       ],
-      "am": "6.2",
+      "am": "6.0",
       "imdb": null,
       "kp": null,
       "desc": "Первая любовь, юношеские отношения и совсем не детские проблемы из жизни японских старшеклассников",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/a/cc/aea9f98303a85775f6fd1e5b5b82eacc-540819-6df562cdd1294dee877aa7463038f709.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-06-17T08:49:54.000Z"
     },
     {
@@ -15935,7 +15962,7 @@
       "kp": null,
       "desc": "Супершпионка решает начать жить с нового листа и стать матерью, однако старые враги начали на нее охоту…",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/f/40/a3d85658622c09d66fb9baf19314cf40-556206-0aa9dab4f48a475eb452ccc06010508e.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-07-09T18:56:06.000Z"
     },
     {
@@ -15961,7 +15988,7 @@
       "kp": null,
       "desc": "Король демонов, младенец и восставшая из мертвых девушка отправляются в долгое и опасное путешествие",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/c/24/491da8e0679c239b739949fad7d2ec24-555149-e4b4a991635542d494f7380eb619f00e.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-07-07T15:34:23.000Z"
     },
     {
@@ -15985,7 +16012,7 @@
       "kp": null,
       "desc": "Напряженный мини-сериал о поисках серийного убийцы в шотландской глуши",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/0/10/bd5d419e25e2d3fb37c0b92a65e99010-554649-9fe01574451b48498e78c732def5368c.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-07-07T10:03:45.000Z"
     },
     {
@@ -16010,7 +16037,7 @@
       "kp": null,
       "desc": "Криминальная драма, сюжет которой основан на реальной истории ирландской преступной группировки «Вестис»",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/8/bd/1891cf3dde500e83313d52031e8b08bd-556900-d62b19a10bc64a549bd8131f35f74a6f.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2026-07-08T12:12:00.000Z"
     },
     {
@@ -16158,7 +16185,7 @@
       "countries": [
         "Япония"
       ],
-      "am": "8.6",
+      "am": "8.7",
       "imdb": "6.8",
       "kp": "7.1",
       "desc": "Юный аристократ видит скрытые таланты людей и собирает команду, способную изменить судьбу его земель",
@@ -16236,7 +16263,7 @@
         "США",
         "Великобритания"
       ],
-      "am": "8.3",
+      "am": "8.4",
       "imdb": null,
       "kp": null,
       "desc": "Юный Джим Хокинс оказывается среди пиратов, для которых золото важнее любых обещаний",
@@ -16313,7 +16340,7 @@
         "Великобритания",
         "Ирландия"
       ],
-      "am": "8.1",
+      "am": "7.6",
       "imdb": null,
       "kp": null,
       "desc": "Вышедший из комы гангстер втягивает медсестру и угонщика в опасную охоту за кельтским золотом",
