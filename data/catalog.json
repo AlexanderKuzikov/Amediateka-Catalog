@@ -1,6 +1,6 @@
 {
   "source": "https://api.amediateka.tech/gateway/v1/cms/content/",
-  "updatedAt": "2026-11-10T05:18:32.113Z",
+  "updatedAt": "2026-11-11T05:17:50.593Z",
   "count": 634,
   "countries": [
     "Австралия",
@@ -188,8 +188,8 @@
       "imdb": "6.7",
       "kp": "6.7",
       "desc": "На пике карьеры Мохаммеда Али хотят отправить во Вьетнам, но его отказ от службы по религиозным соображениям порождает юридическую битву",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/9/00/974fb4780bf61f304939d4f681729900-81586-fbdfa70ca8b443e5a62b264ca190d839.jpg",
-      "posterAsset": "v_poster",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/3/14/7e6f66f65265abc1a04a8d158d30e314-541943-1471b4038d0146849c5edfdc1fdf8d03.jpg",
+      "posterAsset": "productPosterV2",
       "addedAt": "2013-10-05T20:00:00.000Z"
     },
     {
@@ -2754,8 +2754,8 @@
       "imdb": "7.0",
       "kp": "6.2",
       "desc": "Документальный проект, исследующий феномен «фальшивых новостей» в США и то влияние, которое подобная дезинформация оказывает на простых граждан",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/2/3c/b7205ae8f931051bb08d14b32cd5723c-81729-22ec24fcd5814aa5bf250e9f8c658e6d.jpg",
-      "posterAsset": "v_poster",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/6/80/d7d582eb26ef772a4be4f137ea9b2680-594425-d75da7614f56407ab75c843afcf5f3c1.jpg",
+      "posterAsset": "productPosterV2",
       "addedAt": "2020-03-20T10:17:20.000Z"
     },
     {
@@ -2879,7 +2879,7 @@
       "imdb": "6.2",
       "kp": null,
       "desc": "Документальный проект о взлетах и падениях известного спортивного теле- и радиоведущего Крейга Картона",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/0/f5/d787ab9273b37305f3f984ef898a20f5-55128-2e8d87cc3b82416782c25c3e54590399.jpg",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/d/3e/bdf80558cfae135dffb47839d7f73d3e-594400-756661b965b54e369d10782978aaf54f.jpg",
       "posterAsset": "productPosterV2",
       "addedAt": "2020-10-06T16:38:31.000Z"
     },
@@ -4346,7 +4346,7 @@
         "Канада",
         "Мальта"
       ],
-      "am": "8.1",
+      "am": "8.2",
       "imdb": "5.6",
       "kp": "5.8",
       "desc": "Экранизация одной из самых узнаваемых видеоигр переносит зрителей в мир легендарных искусных убийц и открывает историю, в которой древние традиции и современная наука сталкиваются лицом к лицу",
@@ -5972,7 +5972,7 @@
       "countries": [
         "Великобритания"
       ],
-      "am": "2.2",
+      "am": "2.3",
       "imdb": null,
       "kp": null,
       "desc": "Фолк-хоррор, в котором убитые горем родители идут на всё, чтобы оживить умершего сына",
@@ -6264,7 +6264,7 @@
         "США",
         "Великобритания"
       ],
-      "am": "8.5",
+      "am": "5.1",
       "imdb": null,
       "kp": null,
       "desc": "Девушка отправляется в таинственный японский лес, где поиски сестры превращаются в столкновение с потусторонним ужасом",
@@ -6662,7 +6662,7 @@
       "kp": "8.3",
       "desc": "Один из самых популярных криминальных сериалов – история судмедэксперта в полиции Майами, который по совместительству еще и серийный убийца",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/8/f6/aaa760d611b006e67f1f0c4b804c58f6-102142-7dffa149ab94491ab3cc20189a4cc25f.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2024-11-01T14:38:00.000Z"
     },
     {
@@ -7622,7 +7622,7 @@
       "kp": "7.7",
       "desc": "Сериал о мире, в котором вампиры заявили о себе и стали частью общества. Да, они не такие, как мы, но они тоже хотят равенства",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/3/5d/37571e4167efe447e96bf0e28363d35d-50675-cea6987f4bc9472b81925d0bf4f1c22a.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2019-04-09T06:49:44.000Z"
     },
     {
@@ -7676,7 +7676,7 @@
       "kp": "8.3",
       "desc": "Джон Текери (Клайв Оуэн) работает хирургом в больнице, где применяют передовые методы задолго до изобретения лазерного скальпеля и МРТ",
       "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/e/99/73ed3f078b4b3813efe8e17116d95e99-50349-87f09dabd9cf44c3adf1baef116c6626.jpg",
-      "posterAsset": "productPosterV2-unverified",
+      "posterAsset": "productPosterV2",
       "addedAt": "2019-04-09T10:03:56.000Z"
     },
     {
@@ -13758,7 +13758,7 @@
       "slug": "fioletovyij-kak-more",
       "url": "https://www.amediateka.ru/watch/series_38117_fioletovyij-kak-more",
       "year": 2022,
-      "seasons": 2,
+      "seasons": 3,
       "duration": null,
       "genres": [
         "Детектив",
@@ -13774,7 +13774,7 @@
       "imdb": "6.7",
       "kp": "7.9",
       "desc": "Бывшая «Мисс Италия» и красавчик-полицейский с турецкими корнями расследуют убийства в солнечном Палермо",
-      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/b/b5/7a0ce62ae07670cb5a95ceebe5aa3bb5-273242-8dcaee1786dc48bcb32bd3609daac2c7.jpg",
+      "poster": "https://i.amediateka.tech/resize/400x600/_stor_/cms/content-contentasset/4/5b/82f0477bd41d431ebfea8d550789c45b-594360-fe06e20ee0d9417f868c0844aa0f0879.jpg",
       "posterAsset": "productPosterV2",
       "addedAt": "2025-02-28T13:22:00.000Z"
     },
@@ -16007,7 +16007,7 @@
       "countries": [
         "Великобритания"
       ],
-      "am": "8.3",
+      "am": "8.2",
       "imdb": null,
       "kp": null,
       "desc": "Напряженный мини-сериал о поисках серийного убийцы в шотландской глуши",
@@ -16213,7 +16213,7 @@
       "countries": [
         "Япония"
       ],
-      "am": "9.3",
+      "am": "9.4",
       "imdb": "8.2",
       "kp": "8.1",
       "desc": "Лишенный магии Аста бросает вызов миру, где сила заклинаний определяет судьбу человека",
@@ -16237,7 +16237,7 @@
       "countries": [
         "Япония"
       ],
-      "am": "8.8",
+      "am": "8.5",
       "imdb": null,
       "kp": null,
       "desc": "Душа легендарной воительницы перерождается в теле юной аристократки и снова рвется в бой",
@@ -16340,7 +16340,7 @@
         "Великобритания",
         "Ирландия"
       ],
-      "am": "7.6",
+      "am": "7.1",
       "imdb": null,
       "kp": null,
       "desc": "Вышедший из комы гангстер втягивает медсестру и угонщика в опасную охоту за кельтским золотом",
