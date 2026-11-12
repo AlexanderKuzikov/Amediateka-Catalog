@@ -3,7 +3,14 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root
 
-$dataFile = Join-Path $root 'data\series.json'
+$logFile = Join-Path $root 'logs\monthly.log'
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $logFile) | Out-Null
+if ((Test-Path $logFile) -and (Get-Item $logFile).Length -gt 512KB) {
+  Move-Item $logFile (Join-Path $root 'logs\monthly-old.log') -Force
+}
+Start-Transcript -Path $logFile -Append | Out-Null
+
+$dataFile = Join-Path $root 'data\catalog.json'
 $need = $true
 if (Test-Path $dataFile) {
   try {
