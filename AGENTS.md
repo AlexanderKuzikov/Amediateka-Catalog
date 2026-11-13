@@ -9,6 +9,10 @@
 - force monthly: `powershell -ExecutionPolicy Bypass -File scripts/monthly.ps1 -Force`
 - install task: `powershell -ExecutionPolicy Bypass -File scripts/install-task.ps1` — ежедневная проверка, обновление раз в месяц
 - verify: открыть `dist/amediateka_catalog.html` и `dist/amediateka_catalog_json.html`
+- deploy: `powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1` — заливает `dist/amediateka_catalog.html` на Sat, проверяет 200
+  - сайт: https://amediateka.135.106.192.125.nip.io/
+  - сервер: `deploy@135.106.192.125`, ФС `/var/www/sites/amediateka/public` (`index.html` + хардлинк `amediateka_catalog.html`)
+  - Caddy: `/etc/caddy/sites.d/amediateka.caddy`, после правки `caddy validate` + `systemctl reload caddy`
 
 ## Conventions
 
@@ -33,6 +37,7 @@
 - `dist/amediateka_catalog.html` — статический каталог
 - `dist/amediateka_catalog_json.html` — каталог с JSON внутри HTML
 - `scripts/monthly.ps1` — ежемесячное обновление с проверкой даты снимка
+- `scripts/deploy.ps1` — деплой `dist` на VPS sat (135.106.192.125)
 - `scripts/install-task.ps1` — регистрация задачи в Windows Task Scheduler
 - `legacy/` — старый PowerShell-конвейер v1–v3, только история, не использовать
 
